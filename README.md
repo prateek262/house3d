@@ -20,6 +20,24 @@ npm run validate     # architectural/model validation -> VALIDATION_REPORT.md
 
 `dist/` is fully static, so you can host it on any web server or static host. All textures are generated procedurally at runtime, so the app makes no external network requests.
 
+## Free hosting (Vercel or Netlify)
+
+The app builds to static files in `dist/` (no server needed), and both configs are included: [`vercel.json`](vercel.json) and [`netlify.toml`](netlify.toml) (Node 20, public npm registry, long-cache headers for hashed assets).
+
+**Vercel**
+1. Push this repo to GitHub.
+2. At https://vercel.com/new, import the repo. Framework, build command and output directory are read from `vercel.json`.
+3. Click **Deploy**. You get `https://<project>.vercel.app`.
+
+**Netlify**
+1. Push this repo to GitHub.
+2. At https://app.netlify.com/start, import the repo. Build settings are read from `netlify.toml`.
+3. Click **Deploy**. You get `https://<site>.netlify.app`.
+
+**Without GitHub:** run `npm run build`, then drag the `dist/` folder onto https://app.netlify.com/drop.
+
+**From the CLI:** `npx vercel --prod`, or `npx netlify-cli deploy --build --prod`.
+
 ## Features
 
 | Feature | How |
