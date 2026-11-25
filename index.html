@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1112" />
+  <meta name="description" content="Interactive 3D walkthrough of the Tandon Residence, Bilaspur." />
+  <title>Tandon Residence · Interactive 3D Walkthrough</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b38a63'/%3E%3Cpath d='M14 34 32 18l18 16v14H14z' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="intro">
+  <div id="viewport"></div>
+  <div id="fade"></div>
+
+  <header id="topbar" class="glass">
+    <div class="brand">
+      <div class="logo">TR</div>
+      <div><div class="title">Tandon Residence</div><div class="sub">Bilaspur · Ar. Mithlesh Sinha</div></div>
+    </div>
+    <div class="seg" id="modes">
+      <button data-mode="walk" class="active" title="First-person walk (1)">Walk</button>
+      <button data-mode="plan" title="Overhead floor plan (2)">Plan</button>
+      <button data-mode="orbit" title="Exterior orbit (3)">Orbit</button>
+    </div>
+    <div class="seg" id="levels"></div>
+    <button id="presentTop" class="primary" title="Cinematic presentation (P)">▶ Presentation</button>
+    <button id="menuBtn" class="icon" aria-label="Menu">☰</button>
+  </header>
+
+  <aside id="panel" class="glass">
+    <section>
+      <h3>Rooms <span id="roomsLevel" class="muted"></span></h3>
+      <ul id="roomList"></ul>
+    </section>
+    <section>
+      <h3>Interior theme</h3>
+      <div id="themeCards"></div>
+    </section>
+    <section>
+      <h3>Light</h3>
+      <div class="seg small" id="timeSeg"></div>
+    </section>
+    <section class="row">
+      <button id="tourBtn">Guided walk</button>
+      <button id="infoBtn">Specs &amp; checks</button>
+    </section>
+    <section>
+      <h3>Rendering quality</h3>
+      <select id="qualitySel"></select>
+      <div class="muted small" id="perfInfo"></div>
+    </section>
+    <section class="toggles">
+      <label><input type="checkbox" id="tglMap" checked /> Mini-map</label>
+      <label><input type="checkbox" id="tglPath" checked /> Show route</label>
+      <label><input type="checkbox" id="tglServices" /> AC &amp; water services (X-ray)</label>
+      <div id="svcLegend" class="legend hidden"><i style="background:#ff8a3d"></i>VRV system 1 (GF+FF) <i style="background:#21c7b7"></i>VRV system 2 (SF+Terrace) <i style="background:#3d8bff"></i>Water downtake</div>
+    </section>
+  </aside>
+
+  <div id="hud" class="glass">
+    <div id="hudRoom">—</div>
+    <div id="hudMeta" class="muted"></div>
+  </div>
+
+  <div id="caption" class="glass hidden"></div>
+  <div id="toast" class="hidden"></div>
+  <canvas id="minimap" width="240" height="300" class="glass"></canvas>
+
+  <div id="roomCard" class="glass hidden">
+    <div class="rc-title" id="rcTitle"></div>
+    <div class="muted" id="rcMeta"></div>
+    <div class="row">
+      <button id="rcGo" class="primary">Walk there</button>
+      <button id="rcTp">Teleport</button>
+      <button id="rcClose" class="icon">✕</button>
+    </div>
+  </div>
+
+  <div id="presentBar" class="hidden">
+    <div class="lower-third">
+      <div class="lt-kicker" id="ptKicker"></div>
+      <div class="lt-title" id="ptTitle"></div>
+      <div class="lt-caption" id="ptCaption"></div>
+    </div>
+    <div class="pt-controls glass">
+      <button id="ptPrev" class="icon" title="Previous (←)">‹</button>
+      <button id="ptPause" class="icon" title="Pause (space)">❚❚</button>
+      <button id="ptNext" class="icon" title="Next (→)">›</button>
+      <div id="ptDots"></div>
+      <button id="ptExplore" title="Walk from this point">Explore here</button>
+      <button id="ptExit" class="icon" title="Exit (Esc)">✕</button>
+    </div>
+  </div>
+
+  <div id="touchUI" class="hidden">
+    <div id="lookPad"></div>
+    <div id="joy"><div id="knob"></div></div>
+    <div id="floorBtns">
+      <button id="flUp" class="glass">▲<small>Floor</small></button>
+      <button id="flDown" class="glass">▼<small>Floor</small></button>
+    </div>
+  </div>
+
+  <div id="crosshair"></div>
+
+  <div id="intro">
+    <div class="hero">
+      <div class="kicker">Bilaspur, Chhattisgarh</div>
+      <h1>Tandon Residence</h1>
+      <p class="lede">A contemporary G+2 home with a roof terrace, designed by Ar. Mithlesh Sinha. Walk through it in 3D.</p>
+      <ul id="facts"></ul>
+      <div class="cta">
+        <button id="startPresent" class="primary big" disabled>▶ Start presentation</button>
+        <button id="startWalk" class="big ghost" disabled>Explore on foot</button>
+        <button id="startOrbit" class="big ghost" disabled>View exterior</button>
+      </div>
+      <div class="load"><div id="loadBar"></div></div>
+      <div id="loadState" class="muted small">Preparing model…</div>
+      <p class="disclaimer">Visualisation based on the architectural drawings. Furniture, décor, finishes and lighting are indicative interior staging. Areas are indicative, derived from the drawings.</p>
+    </div>
+    <div class="controls-hint glass">
+      <div><b>Move</b> W A S D / arrows · Shift run</div>
+      <div><b>Look</b> mouse (click to capture) or drag</div>
+      <div><b>Touch</b> left stick move · drag right to look</div>
+      <div><b>Views</b> 1 Walk · 2 Plan · 3 Orbit · P Presentation</div>
+    </div>
+  </div>
+
+  <div id="infoModal" class="overlay hidden">
+    <div class="card glass wide">
+      <button id="infoClose" class="icon close">✕</button>
+      <h2>Specifications, assumptions &amp; architectural checks</h2>
+      <div id="infoBody"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

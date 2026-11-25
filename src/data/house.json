@@ -1,0 +1,4554 @@
+{
+ "meta": {
+  "name": "Pratik Tandon's Residence",
+  "location": "Bilaspur, Chhattisgarh, India",
+  "architect": "Ar. Mithlesh Sinha",
+  "source": "PRATIK TANDON.pdf - page 2 (Ground & First Floor Plans), page 3 (Second & Terrace Floor Plans), pages 1/4/6-8 (exterior renders), page 5 (jali options)",
+  "units": "m",
+  "axes": "x = left to right of the drawn plan, z = rear (top of drawing, z = 0) to road/front (+z), y = up. All lengths in metres (mm precision).",
+  "scaleCalibration": "Drawings are labelled in feet-inches and not overall-dimensioned. The grid was reconstructed from labelled clear room sizes plus 230 mm (9\") walls; GF/FF sheet ~14.05 px/ft, SF/terrace sheet ~15.5 px/ft. planLabel.text keeps the original imperial label; planLabel.w/d are in metres.",
+  "overallBuilding": {
+   "width": 12.472,
+   "depth": 15.57
+  },
+  "version": 7,
+  "staging": "Furniture, decor, appliances and finishes are indicative interior staging, not part of the architectural specification."
+ },
+ "defaults": {
+  "wallThickness": 0.229,
+  "partitionThickness": 0.114,
+  "floorToFloor": 3.2,
+  "slabThickness": 0.152,
+  "wallHeight": 3.048,
+  "parapetHeight": 1.067,
+  "railingHeight": 1.067,
+  "openings": {
+   "door": {
+    "sill": 0,
+    "head": 2.134
+   },
+   "door2": {
+    "sill": 0,
+    "head": 2.286
+   },
+   "opening": {
+    "sill": 0,
+    "head": 2.286
+   },
+   "slide": {
+    "sill": 0,
+    "head": 2.438
+   },
+   "window": {
+    "sill": 0.914,
+    "head": 2.134
+   },
+   "vent": {
+    "sill": 1.829,
+    "head": 2.286
+   },
+   "glazing": {
+    "sill": 0,
+    "head": 2.591
+   },
+   "gate": {
+    "sill": 0,
+    "head": 1.372
+   }
+  }
+ },
+ "assumptions": [
+  "A1. Units are metres. No overall plot dimensions are given on the drawings. The building envelope (approx. 12.47 m x 15.57 m including the front setback) is derived by chaining the labelled clear room sizes (feet-inches on the drawings) with 230 mm walls.",
+  "A2. External and main internal walls are 230 mm (9\") brick; toilet/shaft partitions are 115 mm (4.5\"). Wall thickness is not dimensioned on the plans.",
+  "A3. Floor-to-floor height is 3.20 m (10'-6\") with a 150 mm RCC slab (3.05 m clear). No section drawing was provided.",
+  "A4. The ground floor is modelled at a single level (no plinth or entrance steps); plinth height is not shown.",
+  "A5. No north arrow is provided; the road side (front, +z) is assumed to face south for the sun simulation.",
+  "A6. Door widths: main entrance 1.37 m double door, bedroom doors 0.84-0.91 m, toilet doors 0.76 m. Window sills 0.91 m and heads 2.13 m (kitchen sill 1.07 m). Typical values; the plans show openings without sizes.",
+  "A7. Staircase: dog-leg with 2 flights of 10 risers per floor (riser 160 mm, going ~198 mm) inside a 3.05 m x 3.05 m core, landing at mid-height. Riser/tread counts are not shown and are inferred from the core size.",
+  "A8. The double-height void above the GF dining is drawn on both the FF and SF plans and is modelled as a continuous triple-height atrium under the terrace slab.",
+  "A9. The GF store (6'-6\" x 8', 1.98 m x 2.44 m) is used as a Utility / Laundry at the client's request (stacked washer-dryer, sink, tall storage). It has a door from the kitchen plus a second door to the green area (client request).",
+  "A10. Terrace room height 3.05 m with a flat RCC roof; parapets 1.07 m high; balcony and void railings are 1.07 m frameless glass.",
+  "A11. Furniture follows the furniture symbols drawn on the plans where present (beds, sofas, dining, WCs, wardrobes, consoles) and typical layouts elsewhere, at standard catalogue sizes. All furniture, decor, art, curtains and appliances are indicative staging.",
+  "A12. Exterior features (white cantilever frame, wood-clad fin, CNC jali screen, front fence fins) are approximated from the renders; they are not dimensioned.",
+  "A13. The FF/SF office and guest room project west over the GF green area (cantilever or columns not shown).",
+  "A14. FF/SF east-wall bedroom windows and toilet ventilators are assumed; the east wall is drawn mostly solid.",
+  "A15. The GF common toilet is entered from the living / foyer through its north wall, as drawn (door arc); its east wall to the porch is solid.",
+  "A16. GF kitchen, living and bedroom furniture follow the GF plan: rear counter with hob, tall fridge unit, peninsula with sink and breakfast ledge, L-sofa on the east wall, armchair, centre coffee table, 2-seater by the entrance; bed on the north wall with a TV unit between the two south windows.",
+  "A17. The SF balcony snooker table is an 8 ft table (outer ~2.62 m x 1.49 m), the largest that leaves cue clearance in the 4.70 m x 3.91 m balcony. A full-size 12 ft table needs a room of roughly 6.7 m x 4.9 m.",
+  "A18. The terrace living room is staged as a gym at the client's request (rubber floor, mirror wall on the solid west wall with a clerestory above, hanging boxing bag, treadmill, bench, dumbbell rack, yoga mats). The kitchen island follows the terrace plan.",
+  "A19. Interior themes change finishes, furniture fabrics and decor only. Walls, openings, room sizes and furniture positions are identical in every theme.",
+  "A20. Lighting is simulated (sun and sky model, window daylight, indicative ceiling downlights and lamps) for visualisation; it is not a daylight or lux calculation.",
+  "A21. Front elevation styled after the client-supplied reference and the architect's render (PDF p.1): dark stone cladding to front-facing walls, charcoal render elsewhere, a terrace-level roof frame with a slanted timber soffit (left end), full-height CNC-cut metal jali screens (front-left over the FF+SF and on the FF balcony), black-framed slatted gates and pillars. Cladding is a finish; wall and opening positions are unchanged. The earlier flat second-floor-level canopy (an approximation) is replaced by this frame.",
+  "A22. The green area opens to the front yard through the 0.84 m strip west of the GF common toilet, as drawn; the short wall stub that closed it in v1-v3 is removed.",
+  "A23. GF kitchen staged as a luxury modular kitchen (high-gloss lacquer shutters, bronze J-profile handles, black-and-gold marble backsplash, lit glass display uppers, chimney hood, lit open-shelf tall unit, integrated tall fridge unit). The rear wall is modelled solid as drawn (v1 had assumed a window).",
+  "A24. FF and SF master bedrooms are staged with round upholstered beds (~2.29 m diameter), channel-tufted headboards, upholstered wall panels and a circular cove ceiling feature; TVs are provided in all bedrooms and living rooms. All are indicative staging.",
+  "A25. Central air-conditioning is a VRV/VRF heat-pump system (client brief) with two outdoor systems: ODU-1 serves GF+FF, ODU-2 serves SF+terrace, so a fault affects only half the house. Outdoor units stand on galvanised frames against the rear parapet of the open terrace (x 9.37-11.98 m, z 0.33-1.10 m), with >= 1.4 m front service space and open sky for top discharge.",
+  "A26. Cooling loads are an indicative rule-based estimate for Bilaspur (~44 C DB summer design, 24 C/50% RH indoors): floor area x type density (bedroom 215, living/dining 245, office 245, kitchen 340, gym 310, dressing 160, lobby 150 W/m2) + glazing x 230 W/m2 + exposed roof x 80 W/m2 + atrium allowance, x 1.10 safety. Outdoor units use a 0.75 diversity on the block load; connection ratios stay within 50-130%. A consultant's detailed heat-load calculation should confirm the sizes before procurement.",
+  "A27. Indoor units are ceiling cassettes (round-flow 950 x 950 mm panel, or compact 620 x 620 mm) placed by load and throw coverage, clear of beds, pendants, chandelier, cove ceilings and the atrium void. They need a ~300 mm false ceiling (finished height ~2.74 m); the model shows panels at slab soffit for simplicity. Condensate is pumped (built-in drain pumps) to the nearest toilet or shaft. Toilets, utility, stores, stair and open balconies are ventilated, not cooled.",
+  "A28. Refrigerant risers run vertically in the plumbing shaft (riser at x 8.32 m, z 0.58 m, inside the GF duct / FF-SF-terrace shaft overlap) and exit to the outdoor units through the terrace toilet's east wall.",
+  "A29. Two 2,000 L overhead tanks (approx. 1.50 m dia x 1.40 m, triple-layer polyethylene) stand on 450 mm RCC pedestals at roof level (12.80 m): OHT-1 over the terrace toilet/shaft roof, OHT-2 over the stair-cabin roof. Each full tank is ~2.05 t (about 11 kN/m2 under the pedestal), so the pedestals must bear on beams/walls; the structural engineer must confirm the roof slab for this load. Roof access is by a steel cat ladder with safety hoops on the stair-cabin wall.",
+  "A30. Client changes (v6): the GF living 2-seater by the entrance is replaced by an L-shaped built-in shoe-rack bench (open cubbies, cushioned seat, scatter cushions) along the east wall and the front wall up to the main door; the terrace pergola is moved from the small deck in front of the terrace room to the larger open terrace over the SF bedroom (approx. 4.6 m x 5.1 m, four posts, timber slats running left-right across the terrace). The former pergola deck becomes open terrace.",
+  "A31. Client changes (v7): a cantilevered balcony (approx. 3.47 m x 1.24 m, frameless glass railing, planters, LED trim and soffit downlights) is added in front of the SF bedroom, reached through a sliding door; the remaining front opening stays a window. This matches the projecting SF balcony shown in the architect's render (resolving I8) and needs a structural cantilever from the SF slab. A floor-to-slab CNC-cut metal grill now also screens the open west side of the SF snooker balcony.",
+  "A32. Client change (v8): the front-left timber fins are replaced by a full-height (FF+SF) CNC-cut metal jali, matching the side grill; all jali screens use an interlocking star-lattice pattern after the client's reference.",
+  "A33. Client change (v9): dark exterior scheme after the client's reference. Every outward-facing wall face is clad (veined dark-grey stone on street faces, charcoal render elsewhere), open-air slab undersides and planters are charcoal, and timber is kept for the soffits, side fin and gates. Neighbouring buildings stay light as context.",
+  "A34. Client change (v10): the front CNC grill now screens the complete left bay at second-floor level (full width of the snooker balcony, x 2.29-7.12 m) from the SF floor up to the slanted timber soffit, wrapping the corner into the west-side grill. At first-floor level it stays on the left part only, so the living room's sliding door to the front balcony remains usable.",
+  "A35. Client correction (v11): the opening from the GF living room to the green area (line B, z 10.29-11.28 m) is a window (sill 0.91 m, head 2.13 m), not a sliding door. The green area is reached from the front yard through the courtyard passage and from the utility room's door."
+ ],
+ "inconsistencies": [
+  {
+   "id": "I1",
+   "severity": "minor",
+   "text": "GF Dining is labelled 16'-0\" (4.88 m) wide, but holding the bedroom at its labelled 16'-0\" with 230 mm walls leaves ~4.70 m (15'-5\") for the dining zone."
+  },
+  {
+   "id": "I2",
+   "severity": "minor",
+   "text": "GF Dining (14'-4\") + Living (14'-4\") depths are ~0.53 m (1'-9\") shorter than the drawn depth alongside the 30'-0\" (9.14 m) green area; the extra depth is assigned to the living/foyer zone."
+  },
+  {
+   "id": "I3",
+   "severity": "minor",
+   "text": "FF Living is labelled 14'-0\" (4.27 m) wide but measures ~4.70 m between line B and the bedroom wall."
+  },
+  {
+   "id": "I4",
+   "severity": "major",
+   "text": "Duct/shaft boxes do not stack: the GF duct spans x 7.54-9.98 m while the FF/SF shaft spans x 7.37-9.09 m. Plumbing stacks need a common vertical shaft."
+  },
+  {
+   "id": "I5",
+   "severity": "minor",
+   "text": "The SF/terrace sheet is drawn at a different scale (~15.5 px/ft vs 14.05 px/ft); SF stair and dressing widths do not match GF/FF and were fitted to the common stair core."
+  },
+  {
+   "id": "I6",
+   "severity": "major",
+   "text": "The FF/SF west wall (office / guest room) sits ~0.89 m inside the GF outer wall line, and the green area below is open: the upper rooms cantilever or transfer over the courtyard with no columns drawn."
+  },
+  {
+   "id": "I7",
+   "severity": "minor",
+   "text": "The SF plan repeats the FF double-height void, implying a triple-height atrium; this is not confirmed by any section."
+  },
+  {
+   "id": "I8",
+   "severity": "minor",
+   "text": "The renders show a projecting SF balcony on the middle-right of the front facade, whereas the SF plan places the open balcony on the left over the FF living. Resolved in v7 at the client's request: a projecting balcony is added in front of the SF bedroom (A31)."
+  },
+  {
+   "id": "I9",
+   "severity": "minor",
+   "text": "The terrace common toilet is labelled 4'-0\" x 8'-0\" (1.22 m x 2.44 m) but drawn ~1.73 m x 1.42 m (it stacks over the shower below)."
+  },
+  {
+   "id": "I10",
+   "severity": "minor",
+   "text": "The FF/SF \"Toilet 15'-0\" x 7'-8\"\" label appears to include the separate shower cubicle; the WC/bath room alone is ~3.05 m x 2.34 m."
+  },
+  {
+   "id": "I11",
+   "severity": "major",
+   "text": "With a 3.05 m core and 3.20 m floor-to-floor, each flight has ~198 mm goings and 160 mm risers; NBC 2016 recommends goings of at least 250 mm for residential stairs."
+  },
+  {
+   "id": "I12",
+   "severity": "info",
+   "text": "Plot size, setbacks and north direction are not given on any sheet."
+  },
+  {
+   "id": "I13",
+   "severity": "info",
+   "text": "Door positions/swings for stores and some toilets are not drawn and were inferred."
+  },
+  {
+   "id": "I14",
+   "severity": "major",
+   "text": "The terrace kitchen (wet area) sits directly above the SF guest bedroom (dry area); drainage would run through the guest room ceiling unless a sunken slab or external stack is provided."
+  },
+  {
+   "id": "I15",
+   "severity": "minor",
+   "text": "The FF/SF shower cubicles sit above the GF store (dry) and have no external wall; they depend on the adjoining shaft for exhaust and drainage."
+  },
+  {
+   "id": "I16",
+   "severity": "info",
+   "text": "Several upper-floor walls (office/guest room walls, FF front glazing wall, terrace room walls) have no wall directly below; an RCC frame with beams/transfer girders is implied but no structural drawings are provided."
+  },
+  {
+   "id": "I17",
+   "severity": "info",
+   "text": "Model correction (v3): the GF bedroom south wall was previously modelled with one central window. The plan shows two windows (~7.37-8.41 m and ~10.55-11.60 m) either side of a solid section holding the TV unit; the model now follows the plan."
+  },
+  {
+   "id": "I18",
+   "severity": "info",
+   "text": "Model correction (v4): the GF kitchen rear wall is drawn solid; the window assumed there in earlier versions is removed. The kitchen is lit by the courtyard glazing of the adjoining dining and the atrium."
+  },
+  {
+   "id": "I19",
+   "severity": "info",
+   "text": "The drawings show no services. The plumbing shaft (with its GF/FF offset, I4) is the only vertical service route, and the refrigerant risers, condensate and the tank downtake must share it; the shaft size should be checked by the MEP consultant. No roof access is drawn for the overhead tanks; a cat ladder is assumed (A29)."
+  }
+ ],
+ "stairs": {
+  "core": [
+   7.138,
+   2.794,
+   10.186,
+   5.842
+  ],
+  "runX1": 7.138,
+  "runX2": 9.119,
+  "landingX2": 10.186,
+  "flight1Z": [
+   2.794,
+   4.09
+  ],
+  "wellZ": [
+   4.09,
+   4.547
+  ],
+  "flight2Z": [
+   4.547,
+   5.842
+  ],
+  "risersPerFlight": 10,
+  "fromLevels": [
+   "GF",
+   "FF",
+   "SF"
+  ],
+  "entry": [
+   6.888,
+   3.444
+  ],
+  "exit": [
+   6.888,
+   5.182
+  ],
+  "waypointsUp": [
+   [
+    7.376,
+    3.444
+   ],
+   [
+    9.114,
+    3.444
+   ],
+   [
+    9.632,
+    3.444
+   ],
+   [
+    9.632,
+    5.182
+   ],
+   [
+    9.114,
+    5.182
+   ],
+   [
+    7.376,
+    5.182
+   ]
+  ]
+ },
+ "site": {
+  "bounds": [
+   0,
+   0,
+   12.472,
+   15.57
+  ],
+  "road": {
+   "z1": 15.57,
+   "z2": 24.384,
+   "sidewalk": 1.829
+  },
+  "ground": [
+   -12.192,
+   -9.144,
+   24.384,
+   30.48
+  ]
+ },
+ "roof": {
+  "y": 12.802,
+  "rects": [
+   [
+    2.642,
+    0,
+    7.366,
+    9.703
+   ],
+   [
+    7.366,
+    0,
+    9.322,
+    2.794
+   ],
+   [
+    7.366,
+    2.794,
+    10.414,
+    6.071
+   ],
+   [
+    9.322,
+    2.566,
+    10.414,
+    2.794
+   ]
+  ]
+ },
+ "levels": [
+  {
+   "id": "GF",
+   "name": "Ground Floor",
+   "y": 0,
+   "wallHeight": 3.048,
+   "slab": {
+    "ground": true,
+    "rects": [],
+    "holes": []
+   },
+   "rooms": [
+    {
+     "id": "gf-store",
+     "name": "Utility / Laundry",
+     "type": "utility",
+     "floor": "terrazzo",
+     "rects": [
+      [
+       0.229,
+       0.229,
+       2.21,
+       2.667
+      ]
+     ],
+     "planLabel": {
+      "text": "STORE 6'-6\" x 8'-0\" (converted to utility)",
+      "w": 1.981,
+      "d": 2.438
+     }
+    },
+    {
+     "id": "gf-kitchen",
+     "name": "Kitchen",
+     "type": "kitchen",
+     "floor": "marble",
+     "rects": [
+      [
+       2.438,
+       0.229,
+       7.315,
+       2.768
+      ]
+     ]
+    },
+    {
+     "id": "gf-duct",
+     "name": "Duct",
+     "type": "shaft",
+     "floor": "concrete",
+     "accessible": false,
+     "light": false,
+     "rects": [
+      [
+       7.544,
+       0.229,
+       9.982,
+       0.927
+      ]
+     ]
+    },
+    {
+     "id": "gf-store2",
+     "name": "Store",
+     "type": "store",
+     "floor": "tile",
+     "rects": [
+      [
+       7.544,
+       1.042,
+       9.982,
+       2.566
+      ]
+     ],
+     "planLabel": {
+      "text": "8'-0\" x 5'-0\"",
+      "w": 2.438,
+      "d": 1.524
+     }
+    },
+    {
+     "id": "gf-toilet",
+     "name": "Master Toilet",
+     "type": "bathroom",
+     "floor": "tile",
+     "rects": [
+      [
+       10.211,
+       0.229,
+       12.243,
+       2.566
+      ]
+     ]
+    },
+    {
+     "id": "gf-dining",
+     "name": "Dining",
+     "type": "dining",
+     "floor": "marble",
+     "rects": [
+      [
+       2.438,
+       2.768,
+       7.138,
+       7.138
+      ]
+     ],
+     "planLabel": {
+      "text": "16'-0\" x 14'-4\"",
+      "w": 4.877,
+      "d": 4.369
+     }
+    },
+    {
+     "id": "gf-stair",
+     "name": "Staircase",
+     "type": "stair",
+     "floor": "marble",
+     "light": false,
+     "rects": [
+      [
+       7.138,
+       2.794,
+       10.186,
+       5.842
+      ]
+     ]
+    },
+    {
+     "id": "gf-dressing",
+     "name": "Dressing",
+     "type": "dressing",
+     "floor": "wood",
+     "rects": [
+      [
+       10.414,
+       2.794,
+       12.243,
+       5.842
+      ]
+     ]
+    },
+    {
+     "id": "gf-bedroom",
+     "name": "Bedroom (GF)",
+     "type": "bedroom",
+     "floor": "wood",
+     "rects": [
+      [
+       7.366,
+       6.071,
+       12.243,
+       9.931
+      ]
+     ],
+     "planLabel": {
+      "text": "16'-0\" wide",
+      "w": 4.877,
+      "d": null
+     }
+    },
+    {
+     "id": "gf-living",
+     "name": "Living & Foyer",
+     "type": "living",
+     "floor": "marble",
+     "rects": [
+      [
+       2.438,
+       7.138,
+       7.138,
+       10.16
+      ],
+      [
+       2.438,
+       10.16,
+       6.591,
+       12.04
+      ]
+     ],
+     "planLabel": {
+      "text": "16'-0\" x 14'-4\"",
+      "w": 4.877,
+      "d": 4.369
+     }
+    },
+    {
+     "id": "gf-green",
+     "name": "Green Area (Courtyard)",
+     "type": "garden",
+     "floor": "grass",
+     "outdoor": true,
+     "light": false,
+     "rects": [
+      [
+       0.229,
+       2.896,
+       2.21,
+       12.04
+      ]
+     ],
+     "planLabel": {
+      "text": "GREEN AREA 30'-0\" long",
+      "w": null,
+      "d": 9.144
+     }
+    },
+    {
+     "id": "gf-ctoilet",
+     "name": "Common Toilet",
+     "type": "toilet",
+     "floor": "tile",
+     "rects": [
+      [
+       1.295,
+       12.268,
+       3.53,
+       13.487
+      ]
+     ]
+    },
+    {
+     "id": "gf-porch",
+     "name": "Porch / Entrance",
+     "type": "porch",
+     "floor": "stone",
+     "outdoor": true,
+     "rects": [
+      [
+       3.759,
+       12.268,
+       6.82,
+       15.341
+      ]
+     ]
+    },
+    {
+     "id": "gf-parking",
+     "name": "Car Parking",
+     "type": "parking",
+     "floor": "stone",
+     "outdoor": true,
+     "light": false,
+     "rects": [
+      [
+       6.82,
+       10.16,
+       12.243,
+       15.341
+      ]
+     ]
+    },
+    {
+     "id": "gf-frontgarden",
+     "name": "Front Garden",
+     "type": "garden",
+     "floor": "grass",
+     "outdoor": true,
+     "light": false,
+     "rects": [
+      [
+       0.229,
+       13.716,
+       3.759,
+       15.341
+      ]
+     ]
+    },
+    {
+     "id": "gf-sidepath",
+     "name": "Courtyard Passage",
+     "type": "garden",
+     "floor": "stone",
+     "outdoor": true,
+     "light": false,
+     "rects": [
+      [
+       0.229,
+       12.04,
+       1.067,
+       13.716
+      ]
+     ]
+    }
+   ],
+   "walls": [
+    {
+     "id": "g-rear",
+     "x1": 0,
+     "z1": 0,
+     "x2": 12.472,
+     "z2": 0.229,
+     "openings": [
+      {
+       "type": "window",
+       "from": 1.036,
+       "to": 2.012,
+       "sill": 1.067
+      },
+      {
+       "type": "vent",
+       "from": 10.82,
+       "to": 11.582
+      }
+     ]
+    },
+    {
+     "id": "g-west-store",
+     "x1": 0,
+     "z1": 0.229,
+     "x2": 0.229,
+     "z2": 2.896
+    },
+    {
+     "id": "g-store-s",
+     "x1": 0.229,
+     "z1": 2.667,
+     "x2": 2.21,
+     "z2": 2.896,
+     "openings": [
+      {
+       "type": "door",
+       "from": 1.128,
+       "to": 1.89
+      }
+     ]
+    },
+    {
+     "id": "g-B-store",
+     "x1": 2.21,
+     "z1": 0.229,
+     "x2": 2.438,
+     "z2": 2.896,
+     "openings": [
+      {
+       "type": "door",
+       "from": 1.28,
+       "to": 2.073
+      }
+     ]
+    },
+    {
+     "id": "g-B-green",
+     "x1": 2.21,
+     "z1": 2.896,
+     "x2": 2.438,
+     "z2": 12.04,
+     "openings": [
+      {
+       "type": "glazing",
+       "from": 2.972,
+       "to": 7.772
+      },
+      {
+       "type": "window",
+       "from": 10.287,
+       "to": 11.278,
+       "sill": 0.914,
+       "head": 2.134
+      }
+     ]
+    },
+    {
+     "id": "g-C",
+     "x1": 7.315,
+     "z1": 0.229,
+     "x2": 7.544,
+     "z2": 2.566,
+     "openings": [
+      {
+       "type": "door",
+       "from": 1.676,
+       "to": 2.438
+      }
+     ]
+    },
+    {
+     "id": "g-duct",
+     "x1": 7.544,
+     "z1": 0.927,
+     "x2": 9.982,
+     "z2": 1.042
+    },
+    {
+     "id": "g-D",
+     "x1": 9.982,
+     "z1": 0.229,
+     "x2": 10.211,
+     "z2": 2.566
+    },
+    {
+     "id": "g-core-n",
+     "x1": 7.315,
+     "z1": 2.566,
+     "x2": 12.243,
+     "z2": 2.794,
+     "openings": [
+      {
+       "type": "door",
+       "from": 10.668,
+       "to": 11.43
+      }
+     ]
+    },
+    {
+     "id": "g-east",
+     "x1": 12.243,
+     "z1": 0.229,
+     "x2": 12.472,
+     "z2": 10.16,
+     "openings": [
+      {
+       "type": "vent",
+       "from": 0.914,
+       "to": 1.676
+      }
+     ]
+    },
+    {
+     "id": "g-G",
+     "x1": 10.186,
+     "z1": 2.794,
+     "x2": 10.414,
+     "z2": 5.842
+    },
+    {
+     "id": "g-core-s",
+     "x1": 7.138,
+     "z1": 5.842,
+     "x2": 12.243,
+     "z2": 6.071,
+     "openings": [
+      {
+       "type": "opening",
+       "from": 10.546,
+       "to": 11.4
+      }
+     ]
+    },
+    {
+     "id": "g-F-under",
+     "x1": 7.138,
+     "z1": 4.547,
+     "x2": 7.366,
+     "z2": 5.842,
+     "h": 2.804
+    },
+    {
+     "id": "g-F-bed",
+     "x1": 7.138,
+     "z1": 6.071,
+     "x2": 7.366,
+     "z2": 10.16,
+     "openings": [
+      {
+       "type": "door",
+       "from": 6.157,
+       "to": 7.071
+      }
+     ]
+    },
+    {
+     "id": "g-bed-s",
+     "x1": 7.366,
+     "z1": 9.931,
+     "x2": 12.472,
+     "z2": 10.16,
+     "openings": [
+      {
+       "type": "window",
+       "from": 7.391,
+       "to": 8.412,
+       "sill": 0.762,
+       "head": 2.286
+      },
+      {
+       "type": "window",
+       "from": 10.546,
+       "to": 11.598,
+       "sill": 0.762,
+       "head": 2.286
+      }
+     ]
+    },
+    {
+     "id": "g-liv-e",
+     "x1": 6.591,
+     "z1": 10.16,
+     "x2": 6.82,
+     "z2": 12.04,
+     "openings": [
+      {
+       "type": "window",
+       "from": 10.516,
+       "to": 11.582
+      }
+     ]
+    },
+    {
+     "id": "g-liv-front",
+     "x1": 1.067,
+     "z1": 12.04,
+     "x2": 6.82,
+     "z2": 12.268,
+     "openings": [
+      {
+       "type": "door",
+       "from": 2.758,
+       "to": 3.52
+      },
+      {
+       "type": "door2",
+       "from": 4.191,
+       "to": 5.563
+      }
+     ]
+    },
+    {
+     "id": "g-ct-w",
+     "x1": 1.067,
+     "z1": 12.268,
+     "x2": 1.295,
+     "z2": 13.716
+    },
+    {
+     "id": "g-ct-e",
+     "x1": 3.53,
+     "z1": 12.268,
+     "x2": 3.759,
+     "z2": 13.716
+    },
+    {
+     "id": "g-ct-s",
+     "x1": 1.067,
+     "z1": 13.487,
+     "x2": 3.53,
+     "z2": 13.716,
+     "openings": [
+      {
+       "type": "vent",
+       "from": 1.463,
+       "to": 2.134
+      }
+     ]
+    },
+    {
+     "id": "g-glass-part",
+     "x1": 4.572,
+     "z1": 7.582,
+     "x2": 6.401,
+     "z2": 7.62,
+     "mat": "glass"
+    },
+    {
+     "id": "g-cw-west",
+     "x1": 0,
+     "z1": 2.896,
+     "x2": 0.229,
+     "z2": 15.57,
+     "h": 2.134,
+     "mat": "compound"
+    },
+    {
+     "id": "g-cw-east",
+     "x1": 12.243,
+     "z1": 10.16,
+     "x2": 12.472,
+     "z2": 15.57,
+     "h": 2.134,
+     "mat": "compound"
+    },
+    {
+     "id": "g-cw-front",
+     "x1": 0.229,
+     "z1": 15.341,
+     "x2": 12.243,
+     "z2": 15.57,
+     "h": 1.372,
+     "mat": "fence",
+     "openings": [
+      {
+       "type": "gate",
+       "from": 5.304,
+       "to": 6.706
+      },
+      {
+       "type": "gate",
+       "from": 6.949,
+       "to": 12.243
+      }
+     ]
+    },
+    {
+     "id": "g-cargate",
+     "x1": 6.949,
+     "z1": 15.423,
+     "x2": 12.243,
+     "z2": 15.484,
+     "h": 1.981,
+     "mat": "gate"
+    }
+   ],
+   "railings": [],
+   "furniture": [
+    {
+     "type": "shelf",
+     "room": "gf-store2",
+     "x": 8.763,
+     "z": 1.25,
+     "w": 2.134,
+     "d": 0.366,
+     "rot": 0
+    },
+    {
+     "type": "wc",
+     "room": "gf-toilet",
+     "x": 11.887,
+     "z": 0.732,
+     "w": 0.701,
+     "d": 0.457,
+     "rot": 270
+    },
+    {
+     "type": "basin",
+     "room": "gf-toilet",
+     "x": 12.024,
+     "z": 1.92,
+     "w": 0.442,
+     "d": 0.732,
+     "rot": 270
+    },
+    {
+     "type": "shower",
+     "room": "gf-toilet",
+     "x": 10.668,
+     "z": 1.006,
+     "w": 0.792,
+     "d": 1.097,
+     "rot": 90
+    },
+    {
+     "type": "dining_table",
+     "room": "gf-dining",
+     "x": 4.542,
+     "z": 5.09,
+     "w": 2.286,
+     "d": 1.829,
+     "rot": 0,
+     "seats": 6
+    },
+    {
+     "type": "rug",
+     "room": "gf-dining",
+     "x": 4.542,
+     "z": 5.09,
+     "w": 2.896,
+     "d": 2.286,
+     "rot": 0
+    },
+    {
+     "type": "chandelier",
+     "room": "gf-dining",
+     "x": 4.542,
+     "z": 5.09,
+     "w": 1.219,
+     "d": 0.457,
+     "rot": 0,
+     "hang": 2.896
+    },
+    {
+     "type": "sideboard",
+     "room": "gf-dining",
+     "x": 6.904,
+     "z": 5.121,
+     "w": 0.457,
+     "d": 1.402,
+     "rot": 270
+    },
+    {
+     "type": "wardrobe",
+     "room": "gf-dressing",
+     "x": 11.939,
+     "z": 4.319,
+     "w": 0.594,
+     "d": 2.865,
+     "rot": 270
+    },
+    {
+     "type": "dressing_table",
+     "room": "gf-dressing",
+     "x": 10.653,
+     "z": 4.115,
+     "w": 0.457,
+     "d": 1.036,
+     "rot": 90
+    },
+    {
+     "type": "tree",
+     "room": "gf-green",
+     "x": 1.158,
+     "z": 10.211,
+     "w": 0.305,
+     "d": 0.305,
+     "rot": 0,
+     "canopy": 1.524
+    },
+    {
+     "type": "lounger",
+     "room": "gf-green",
+     "x": 1.036,
+     "z": 6.401,
+     "w": 0.671,
+     "d": 1.829,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "gf-green",
+     "x": 0.61,
+     "z": 3.414,
+     "w": 0.488,
+     "d": 0.488,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "gf-green",
+     "x": 1.768,
+     "z": 4.572,
+     "w": 0.488,
+     "d": 0.488,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "gf-green",
+     "x": 1.798,
+     "z": 11.552,
+     "w": 0.549,
+     "d": 0.549,
+     "rot": 0
+    },
+    {
+     "type": "planter",
+     "room": "gf-green",
+     "x": 0.427,
+     "z": 8.23,
+     "w": 0.366,
+     "d": 2.438,
+     "rot": 90
+    },
+    {
+     "type": "bench",
+     "room": "gf-porch",
+     "x": 6.523,
+     "z": 13.411,
+     "w": 0.488,
+     "d": 1.219,
+     "rot": 90
+    },
+    {
+     "type": "plant",
+     "room": "gf-porch",
+     "x": 6.523,
+     "z": 12.482,
+     "w": 0.427,
+     "d": 0.427,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "gf-porch",
+     "x": 6.279,
+     "z": 15.057,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 0
+    },
+    {
+     "type": "car",
+     "room": "gf-parking",
+     "x": 9.601,
+     "z": 12.802,
+     "w": 1.89,
+     "d": 4.572,
+     "rot": 0
+    },
+    {
+     "type": "tree",
+     "room": "gf-frontgarden",
+     "x": 1.524,
+     "z": 14.569,
+     "w": 0.305,
+     "d": 0.305,
+     "rot": 0,
+     "canopy": 1.829
+    },
+    {
+     "type": "plant",
+     "room": "gf-frontgarden",
+     "x": 3.2,
+     "z": 14.783,
+     "w": 0.549,
+     "d": 0.549,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "gf-frontgarden",
+     "x": 2.499,
+     "z": 14.935,
+     "w": 0.488,
+     "d": 0.488,
+     "rot": 0
+    },
+    {
+     "type": "laundry_unit",
+     "room": "gf-store",
+     "x": 0.564,
+     "z": 1.448,
+     "w": 0.671,
+     "d": 2.377,
+     "rot": 90
+    },
+    {
+     "type": "island",
+     "room": "gf-kitchen",
+     "x": 4.1,
+     "z": 2.454,
+     "w": 3.322,
+     "d": 0.61,
+     "rot": 0,
+     "sink": 2.926,
+     "ledge": [
+      3.627,
+      5.182,
+      0.335
+     ],
+     "kstyle": true
+    },
+    {
+     "type": "pendant",
+     "room": "gf-kitchen",
+     "x": 4.404,
+     "z": 2.621,
+     "w": 1.524,
+     "d": 0.183,
+     "rot": 0
+    },
+    {
+     "type": "stool",
+     "room": "gf-dining",
+     "x": 3.901,
+     "z": 3.277,
+     "w": 0.335,
+     "d": 0.335,
+     "rot": 180
+    },
+    {
+     "type": "stool",
+     "room": "gf-dining",
+     "x": 4.404,
+     "z": 3.277,
+     "w": 0.335,
+     "d": 0.335,
+     "rot": 180
+    },
+    {
+     "type": "stool",
+     "room": "gf-dining",
+     "x": 4.907,
+     "z": 3.277,
+     "w": 0.335,
+     "d": 0.335,
+     "rot": 180
+    },
+    {
+     "type": "basin",
+     "room": "gf-dining",
+     "x": 2.637,
+     "z": 3.581,
+     "w": 0.396,
+     "d": 1.097,
+     "rot": 90,
+     "sinks": 1,
+     "mirror": false
+    },
+    {
+     "type": "plant",
+     "room": "gf-dining",
+     "x": 2.743,
+     "z": 6.828,
+     "w": 0.427,
+     "d": 0.427,
+     "rot": 0
+    },
+    {
+     "type": "wall_panel",
+     "room": "gf-living",
+     "x": 2.469,
+     "z": 9.068,
+     "w": 0.046,
+     "d": 2.377,
+     "rot": 90
+    },
+    {
+     "type": "tv_unit",
+     "room": "gf-living",
+     "x": 2.621,
+     "z": 9.053,
+     "w": 0.335,
+     "d": 2.438,
+     "rot": 90
+    },
+    {
+     "type": "sofa_l",
+     "room": "gf-living",
+     "x": 6.355,
+     "z": 8.976,
+     "w": 1.494,
+     "d": 2.103,
+     "rot": 270,
+     "seat": 0.792
+    },
+    {
+     "type": "armchair",
+     "room": "gf-living",
+     "x": 4.938,
+     "z": 8.336,
+     "w": 0.792,
+     "d": 0.762,
+     "rot": 0
+    },
+    {
+     "type": "coffee_table",
+     "room": "gf-living",
+     "x": 5.395,
+     "z": 9.54,
+     "w": 1.036,
+     "d": 0.732,
+     "rot": 0
+    },
+    {
+     "type": "rug",
+     "room": "gf-living",
+     "x": 5.243,
+     "z": 9.449,
+     "w": 2.012,
+     "d": 2.134,
+     "rot": 0
+    },
+    {
+     "type": "floor_lamp",
+     "room": "gf-living",
+     "x": 4.145,
+     "z": 7.925,
+     "w": 0.305,
+     "d": 0.305,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "gf-living",
+     "x": 3.84,
+     "z": 11.781,
+     "w": 0.396,
+     "d": 0.396,
+     "rot": 0
+    },
+    {
+     "type": "wc",
+     "room": "gf-ctoilet",
+     "x": 1.829,
+     "z": 13.137,
+     "w": 0.457,
+     "d": 0.701,
+     "rot": 180
+    },
+    {
+     "type": "basin",
+     "room": "gf-ctoilet",
+     "x": 2.926,
+     "z": 13.274,
+     "w": 1.097,
+     "d": 0.427,
+     "rot": 180,
+     "sinks": 1,
+     "sinkOffset": -0.061
+    },
+    {
+     "type": "bed",
+     "room": "gf-bedroom",
+     "x": 9.327,
+     "z": 7.047,
+     "w": 1.768,
+     "d": 1.951,
+     "rot": 0
+    },
+    {
+     "type": "nightstand",
+     "room": "gf-bedroom",
+     "x": 8.199,
+     "z": 6.325,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 0
+    },
+    {
+     "type": "nightstand",
+     "room": "gf-bedroom",
+     "x": 10.455,
+     "z": 6.325,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 0
+    },
+    {
+     "type": "tv_unit",
+     "room": "gf-bedroom",
+     "x": 9.327,
+     "z": 9.729,
+     "w": 2.012,
+     "d": 0.351,
+     "rot": 180
+    },
+    {
+     "type": "sofa",
+     "room": "gf-bedroom",
+     "x": 11.872,
+     "z": 7.346,
+     "w": 0.732,
+     "d": 1.798,
+     "rot": 270
+    },
+    {
+     "type": "sideboard",
+     "room": "gf-bedroom",
+     "x": 11.939,
+     "z": 9.159,
+     "w": 0.518,
+     "d": 1.402,
+     "rot": 270
+    },
+    {
+     "type": "rug",
+     "room": "gf-bedroom",
+     "x": 9.327,
+     "z": 7.681,
+     "w": 2.499,
+     "d": 1.707,
+     "rot": 0
+    },
+    {
+     "type": "art",
+     "room": "gf-bedroom",
+     "x": 9.327,
+     "z": 6.087,
+     "w": 1.402,
+     "d": 0.03,
+     "rot": 0,
+     "h": 0.732,
+     "y": 1.829,
+     "art": 2
+    },
+    {
+     "type": "art",
+     "room": "gf-bedroom",
+     "x": 12.222,
+     "z": 9.159,
+     "w": 0.03,
+     "d": 0.914,
+     "rot": 270,
+     "h": 0.671,
+     "y": 1.646,
+     "art": 4
+    },
+    {
+     "type": "art",
+     "room": "gf-living",
+     "x": 7.12,
+     "z": 8.961,
+     "w": 0.03,
+     "d": 1.585,
+     "rot": 270,
+     "h": 0.792,
+     "y": 1.707,
+     "art": 0
+    },
+    {
+     "type": "art",
+     "room": "gf-dining",
+     "x": 7.12,
+     "z": 5.197,
+     "w": 0.03,
+     "d": 0.914,
+     "rot": 270,
+     "h": 1.158,
+     "y": 1.524,
+     "art": 1
+    },
+    {
+     "type": "art",
+     "room": "gf-living",
+     "x": 2.457,
+     "z": 11.643,
+     "w": 0.03,
+     "d": 0.579,
+     "rot": 90,
+     "h": 0.853,
+     "y": 1.524,
+     "art": 5
+    },
+    {
+     "type": "kitchen_run",
+     "room": "gf-kitchen",
+     "x": 4.869,
+     "z": 0.539,
+     "w": 4.862,
+     "d": 0.61,
+     "rot": 0,
+     "modules": [
+      {
+       "t": "tall_open",
+       "w": 0.732
+      },
+      {
+       "t": "base",
+       "upper": "glass",
+       "w": 0.792
+      },
+      {
+       "t": "hood",
+       "w": 0.792
+      },
+      {
+       "t": "base",
+       "upper": "gloss",
+       "w": 0.762
+      },
+      {
+       "t": "base",
+       "upper": "glass",
+       "w": 0.747
+      },
+      {
+       "t": "tall_fridge",
+       "w": 1.036
+      }
+     ]
+    },
+    {
+     "type": "shoe_bench",
+     "room": "gf-living",
+     "x": 6.364,
+     "z": 11.11,
+     "w": 0.442,
+     "d": 1.814,
+     "rot": 270,
+     "cushions": 2
+    },
+    {
+     "type": "shoe_bench",
+     "room": "gf-living",
+     "x": 5.877,
+     "z": 11.805,
+     "w": 0.533,
+     "d": 0.442,
+     "rot": 180,
+     "cushions": 1,
+     "endPanel": "left"
+    }
+   ],
+   "features": []
+  },
+  {
+   "id": "FF",
+   "name": "First Floor",
+   "y": 3.2,
+   "wallHeight": 3.048,
+   "slab": {
+    "rects": [
+     [
+      0.889,
+      0,
+      12.472,
+      4.42
+     ],
+     [
+      2.21,
+      4.42,
+      12.472,
+      11.684
+     ],
+     [
+      1.397,
+      11.684,
+      12.472,
+      13.919
+     ],
+     [
+      0,
+      0,
+      0.889,
+      2.896
+     ]
+    ],
+    "holes": [
+     [
+      7.138,
+      2.794,
+      10.186,
+      5.842
+     ],
+     [
+      2.438,
+      4.42,
+      5.563,
+      7.544
+     ]
+    ]
+   },
+   "rooms": [
+    {
+     "id": "ff-office",
+     "name": "Office",
+     "type": "office",
+     "floor": "wood",
+     "rects": [
+      [
+       1.118,
+       0.229,
+       5.69,
+       4.191
+      ]
+     ],
+     "planLabel": {
+      "text": "OFFICE (size not legible)",
+      "w": null,
+      "d": null
+     }
+    },
+    {
+     "id": "ff-ctoilet",
+     "name": "Common Toilet",
+     "type": "toilet",
+     "floor": "tile",
+     "rects": [
+      [
+       5.918,
+       0.229,
+       7.138,
+       2.566
+      ]
+     ]
+    },
+    {
+     "id": "ff-shaft",
+     "name": "Shaft",
+     "type": "shaft",
+     "floor": "concrete",
+     "accessible": false,
+     "light": false,
+     "rects": [
+      [
+       7.366,
+       0.229,
+       9.093,
+       1.029
+      ]
+     ]
+    },
+    {
+     "id": "ff-shower",
+     "name": "Shower",
+     "type": "bathroom",
+     "floor": "tile",
+     "rects": [
+      [
+       7.366,
+       1.143,
+       9.093,
+       2.566
+      ]
+     ]
+    },
+    {
+     "id": "ff-toilet",
+     "name": "Master Toilet",
+     "type": "bathroom",
+     "floor": "tile",
+     "rects": [
+      [
+       9.207,
+       0.229,
+       12.243,
+       2.566
+      ]
+     ],
+     "planLabel": {
+      "text": "15'-0\" x 7'-8\"",
+      "w": 4.572,
+      "d": 2.337
+     }
+    },
+    {
+     "id": "ff-stair",
+     "name": "Staircase",
+     "type": "stair",
+     "floor": "none",
+     "light": false,
+     "rects": [
+      [
+       7.138,
+       2.794,
+       10.186,
+       5.842
+      ]
+     ]
+    },
+    {
+     "id": "ff-dressing",
+     "name": "Dressing",
+     "type": "dressing",
+     "floor": "wood",
+     "rects": [
+      [
+       10.414,
+       2.794,
+       12.243,
+       5.842
+      ]
+     ]
+    },
+    {
+     "id": "ff-corridor",
+     "name": "Lobby / Corridor",
+     "type": "corridor",
+     "floor": "marble",
+     "rects": [
+      [
+       5.918,
+       2.794,
+       7.138,
+       7.544
+      ],
+      [
+       5.563,
+       4.42,
+       5.918,
+       7.544
+      ]
+     ]
+    },
+    {
+     "id": "ff-void",
+     "name": "Double-height Void",
+     "type": "void",
+     "floor": "none",
+     "accessible": false,
+     "light": false,
+     "rects": [
+      [
+       2.438,
+       4.42,
+       5.563,
+       7.544
+      ]
+     ]
+    },
+    {
+     "id": "ff-living",
+     "name": "Family Living",
+     "type": "living",
+     "floor": "wood",
+     "rects": [
+      [
+       2.438,
+       7.544,
+       7.138,
+       11.455
+      ]
+     ],
+     "planLabel": {
+      "text": "14'-0\" wide",
+      "w": 4.267,
+      "d": null
+     }
+    },
+    {
+     "id": "ff-bedroom",
+     "name": "Master Bedroom (FF)",
+     "type": "bedroom",
+     "floor": "wood",
+     "rects": [
+      [
+       7.366,
+       6.071,
+       12.243,
+       11.455
+      ]
+     ],
+     "planLabel": {
+      "text": "16'-0\" wide",
+      "w": 4.877,
+      "d": null
+     }
+    },
+    {
+     "id": "ff-balcony",
+     "name": "Balcony",
+     "type": "balcony",
+     "floor": "deck",
+     "outdoor": true,
+     "light": false,
+     "rects": [
+      [
+       1.397,
+       11.684,
+       12.472,
+       13.919
+      ]
+     ]
+    }
+   ],
+   "walls": [
+    {
+     "id": "f-rear",
+     "x1": 0.889,
+     "z1": 0,
+     "x2": 12.472,
+     "z2": 0.229,
+     "openings": [
+      {
+       "type": "window",
+       "from": 1.829,
+       "to": 4.572
+      },
+      {
+       "type": "vent",
+       "from": 6.248,
+       "to": 6.858
+      },
+      {
+       "type": "vent",
+       "from": 10.82,
+       "to": 11.735
+      }
+     ]
+    },
+    {
+     "id": "f-W2",
+     "x1": 0.889,
+     "z1": 0.229,
+     "x2": 1.118,
+     "z2": 4.42,
+     "openings": [
+      {
+       "type": "window",
+       "from": 1.219,
+       "to": 3.353
+      }
+     ]
+    },
+    {
+     "id": "f-off-s",
+     "x1": 1.118,
+     "z1": 4.191,
+     "x2": 5.69,
+     "z2": 4.42
+    },
+    {
+     "id": "f-H",
+     "x1": 5.69,
+     "z1": 0.229,
+     "x2": 5.918,
+     "z2": 4.42,
+     "openings": [
+      {
+       "type": "door",
+       "from": 3.2,
+       "to": 4.115
+      }
+     ]
+    },
+    {
+     "id": "f-F-ct",
+     "x1": 7.138,
+     "z1": 0.229,
+     "x2": 7.366,
+     "z2": 2.566
+    },
+    {
+     "id": "f-core-n",
+     "x1": 5.918,
+     "z1": 2.566,
+     "x2": 12.243,
+     "z2": 2.794,
+     "openings": [
+      {
+       "type": "door",
+       "from": 6.157,
+       "to": 6.919
+      },
+      {
+       "type": "door",
+       "from": 10.668,
+       "to": 11.43
+      }
+     ]
+    },
+    {
+     "id": "f-shaft",
+     "x1": 7.366,
+     "z1": 1.029,
+     "x2": 9.093,
+     "z2": 1.143
+    },
+    {
+     "id": "f-showerp",
+     "x1": 9.093,
+     "z1": 0.229,
+     "x2": 9.207,
+     "z2": 2.566,
+     "openings": [
+      {
+       "type": "opening",
+       "from": 1.372,
+       "to": 2.134
+      }
+     ]
+    },
+    {
+     "id": "f-east",
+     "x1": 12.243,
+     "z1": 0.229,
+     "x2": 12.472,
+     "z2": 11.684,
+     "openings": [
+      {
+       "type": "vent",
+       "from": 0.914,
+       "to": 1.676
+      },
+      {
+       "type": "window",
+       "from": 7.925,
+       "to": 9.449
+      }
+     ]
+    },
+    {
+     "id": "f-G",
+     "x1": 10.186,
+     "z1": 2.794,
+     "x2": 10.414,
+     "z2": 5.842
+    },
+    {
+     "id": "f-core-s",
+     "x1": 7.138,
+     "z1": 5.842,
+     "x2": 12.243,
+     "z2": 6.071,
+     "openings": [
+      {
+       "type": "opening",
+       "from": 10.546,
+       "to": 11.4
+      }
+     ]
+    },
+    {
+     "id": "f-F-bed",
+     "x1": 7.138,
+     "z1": 6.071,
+     "x2": 7.366,
+     "z2": 11.455,
+     "openings": [
+      {
+       "type": "door",
+       "from": 6.187,
+       "to": 7.01
+      }
+     ]
+    },
+    {
+     "id": "f-B",
+     "x1": 2.21,
+     "z1": 4.42,
+     "x2": 2.438,
+     "z2": 11.455,
+     "openings": [
+      {
+       "type": "glazing",
+       "from": 4.572,
+       "to": 7.315,
+       "head": 2.896
+      },
+      {
+       "type": "window",
+       "from": 8.23,
+       "to": 10.668,
+       "sill": 0.762
+      }
+     ]
+    },
+    {
+     "id": "f-front",
+     "x1": 2.21,
+     "z1": 11.455,
+     "x2": 12.472,
+     "z2": 11.684,
+     "openings": [
+      {
+       "type": "slide",
+       "from": 2.743,
+       "to": 6.858
+      },
+      {
+       "type": "window",
+       "from": 7.62,
+       "to": 11.125,
+       "sill": 0.457,
+       "head": 2.438
+      },
+      {
+       "type": "door",
+       "from": 11.43,
+       "to": 12.192
+      }
+     ]
+    }
+   ],
+   "railings": [
+    {
+     "x1": 5.547,
+     "z1": 4.42,
+     "x2": 5.578,
+     "z2": 7.544
+    },
+    {
+     "x1": 2.438,
+     "z1": 7.529,
+     "x2": 5.578,
+     "z2": 7.559
+    },
+    {
+     "x1": 1.397,
+     "z1": 13.889,
+     "x2": 12.472,
+     "z2": 13.919
+    },
+    {
+     "x1": 1.397,
+     "z1": 11.684,
+     "x2": 1.427,
+     "z2": 13.889
+    },
+    {
+     "x1": 12.441,
+     "z1": 11.684,
+     "x2": 12.472,
+     "z2": 13.889
+    }
+   ],
+   "furniture": [
+    {
+     "type": "desk",
+     "room": "ff-office",
+     "x": 2.743,
+     "z": 0.64,
+     "w": 1.829,
+     "d": 0.792,
+     "rot": 0
+    },
+    {
+     "type": "bookshelf",
+     "room": "ff-office",
+     "x": 1.311,
+     "z": 2.256,
+     "w": 0.366,
+     "d": 2.134,
+     "rot": 90
+    },
+    {
+     "type": "dining_table",
+     "room": "ff-office",
+     "x": 4.359,
+     "z": 2.073,
+     "w": 1.341,
+     "d": 1.341,
+     "rot": 0,
+     "seats": 4
+    },
+    {
+     "type": "sofa",
+     "room": "ff-office",
+     "x": 2.591,
+     "z": 3.764,
+     "w": 1.829,
+     "d": 0.792,
+     "rot": 180
+    },
+    {
+     "type": "plant",
+     "room": "ff-office",
+     "x": 5.364,
+     "z": 0.518,
+     "w": 0.427,
+     "d": 0.427,
+     "rot": 0
+    },
+    {
+     "type": "rug",
+     "room": "ff-office",
+     "x": 2.743,
+     "z": 2.743,
+     "w": 1.829,
+     "d": 1.372,
+     "rot": 0
+    },
+    {
+     "type": "wc",
+     "room": "ff-ctoilet",
+     "x": 6.523,
+     "z": 0.594,
+     "w": 0.457,
+     "d": 0.701,
+     "rot": 0
+    },
+    {
+     "type": "basin",
+     "room": "ff-ctoilet",
+     "x": 6.919,
+     "z": 1.524,
+     "w": 0.427,
+     "d": 0.671,
+     "rot": 270
+    },
+    {
+     "type": "shower",
+     "room": "ff-shower",
+     "x": 8.23,
+     "z": 1.859,
+     "w": 1.372,
+     "d": 1.158,
+     "rot": 0
+    },
+    {
+     "type": "bathtub",
+     "room": "ff-toilet",
+     "x": 11.841,
+     "z": 1.28,
+     "w": 0.792,
+     "d": 1.676,
+     "rot": 270
+    },
+    {
+     "type": "wc",
+     "room": "ff-toilet",
+     "x": 9.876,
+     "z": 0.594,
+     "w": 0.457,
+     "d": 0.701,
+     "rot": 0
+    },
+    {
+     "type": "basin",
+     "room": "ff-toilet",
+     "x": 10.851,
+     "z": 0.518,
+     "w": 0.914,
+     "d": 0.549,
+     "rot": 0
+    },
+    {
+     "type": "wardrobe",
+     "room": "ff-dressing",
+     "x": 11.939,
+     "z": 4.319,
+     "w": 0.594,
+     "d": 2.865,
+     "rot": 270
+    },
+    {
+     "type": "dressing_table",
+     "room": "ff-dressing",
+     "x": 10.653,
+     "z": 4.115,
+     "w": 0.457,
+     "d": 1.036,
+     "rot": 90
+    },
+    {
+     "type": "wall_panel",
+     "room": "ff-living",
+     "x": 7.102,
+     "z": 9.449,
+     "w": 0.046,
+     "d": 2.438,
+     "rot": 270
+    },
+    {
+     "type": "tv_unit",
+     "room": "ff-living",
+     "x": 6.904,
+     "z": 9.449,
+     "w": 0.427,
+     "d": 2.134,
+     "rot": 270
+    },
+    {
+     "type": "sofa",
+     "room": "ff-living",
+     "x": 4.755,
+     "z": 9.449,
+     "w": 0.975,
+     "d": 2.438,
+     "rot": 90
+    },
+    {
+     "type": "coffee_table",
+     "room": "ff-living",
+     "x": 5.791,
+     "z": 9.449,
+     "w": 0.732,
+     "d": 1.28,
+     "rot": 90
+    },
+    {
+     "type": "plant",
+     "room": "ff-living",
+     "x": 6.934,
+     "z": 11.095,
+     "w": 0.366,
+     "d": 0.366,
+     "rot": 0
+    },
+    {
+     "type": "armchair",
+     "room": "ff-living",
+     "x": 5.73,
+     "z": 10.79,
+     "w": 0.792,
+     "d": 0.792,
+     "rot": 180
+    },
+    {
+     "type": "rug",
+     "room": "ff-living",
+     "x": 5.608,
+     "z": 9.449,
+     "w": 2.286,
+     "d": 3.048,
+     "rot": 0
+    },
+    {
+     "type": "bookshelf",
+     "room": "ff-living",
+     "x": 2.652,
+     "z": 7.925,
+     "w": 0.366,
+     "d": 0.671,
+     "rot": 90
+    },
+    {
+     "type": "floor_lamp",
+     "room": "ff-living",
+     "x": 2.804,
+     "z": 11.156,
+     "w": 0.305,
+     "d": 0.305,
+     "rot": 0
+    },
+    {
+     "type": "armchair",
+     "room": "ff-living",
+     "x": 3.109,
+     "z": 10.729,
+     "w": 0.792,
+     "d": 0.792,
+     "rot": 90
+    },
+    {
+     "type": "nightstand",
+     "room": "ff-bedroom",
+     "x": 11.994,
+     "z": 6.69,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 270
+    },
+    {
+     "type": "nightstand",
+     "room": "ff-bedroom",
+     "x": 11.994,
+     "z": 9.769,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 270
+    },
+    {
+     "type": "tv_unit",
+     "room": "ff-bedroom",
+     "x": 7.59,
+     "z": 8.23,
+     "w": 0.427,
+     "d": 1.829,
+     "rot": 90
+    },
+    {
+     "type": "desk",
+     "room": "ff-bedroom",
+     "x": 8.534,
+     "z": 6.37,
+     "w": 1.219,
+     "d": 0.549,
+     "rot": 0
+    },
+    {
+     "type": "armchair",
+     "room": "ff-bedroom",
+     "x": 8.534,
+     "z": 10.851,
+     "w": 0.792,
+     "d": 0.792,
+     "rot": 180
+    },
+    {
+     "type": "armchair",
+     "room": "ff-bedroom",
+     "x": 9.876,
+     "z": 10.851,
+     "w": 0.792,
+     "d": 0.792,
+     "rot": 180
+    },
+    {
+     "type": "coffee_table",
+     "room": "ff-bedroom",
+     "x": 9.205,
+     "z": 10.851,
+     "w": 0.488,
+     "d": 0.488,
+     "rot": 0
+    },
+    {
+     "type": "lounger",
+     "room": "ff-balcony",
+     "x": 3.962,
+     "z": 13.503,
+     "w": 1.829,
+     "d": 0.671,
+     "rot": 90
+    },
+    {
+     "type": "lounger",
+     "room": "ff-balcony",
+     "x": 5.944,
+     "z": 13.503,
+     "w": 1.829,
+     "d": 0.671,
+     "rot": 90
+    },
+    {
+     "type": "outdoor_table",
+     "room": "ff-balcony",
+     "x": 2.316,
+     "z": 12.771,
+     "w": 1.402,
+     "d": 1.402,
+     "rot": 0
+    },
+    {
+     "type": "planter",
+     "room": "ff-balcony",
+     "x": 8.23,
+     "z": 13.716,
+     "w": 1.829,
+     "d": 0.305,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "ff-balcony",
+     "x": 12.07,
+     "z": 13.533,
+     "w": 0.488,
+     "d": 0.488,
+     "rot": 0
+    },
+    {
+     "type": "art",
+     "room": "ff-office",
+     "x": 2.591,
+     "z": 4.176,
+     "w": 1.524,
+     "d": 0.03,
+     "rot": 180,
+     "h": 0.762,
+     "y": 1.676,
+     "art": 3
+    },
+    {
+     "type": "round_bed",
+     "room": "ff-bedroom",
+     "x": 11.019,
+     "z": 8.23,
+     "w": 2.438,
+     "d": 2.56,
+     "rot": 270
+    },
+    {
+     "type": "fabric_panel",
+     "room": "ff-bedroom",
+     "x": 12.219,
+     "z": 8.23,
+     "w": 0.046,
+     "d": 3.962,
+     "rot": 270
+    },
+    {
+     "type": "ceiling_cove",
+     "room": "ff-bedroom",
+     "x": 10.942,
+     "z": 8.23,
+     "w": 2.499,
+     "d": 2.499,
+     "rot": 0
+    },
+    {
+     "type": "rug_round",
+     "room": "ff-bedroom",
+     "x": 10.851,
+     "z": 8.23,
+     "w": 2.621,
+     "d": 2.621,
+     "rot": 0
+    }
+   ],
+   "features": [
+    {
+     "type": "jali_panel",
+     "x1": 2.286,
+     "x2": 4.755,
+     "z1": 11.735000000000001,
+     "z2": 11.796,
+     "y1": 0,
+     "y2": 3.2,
+     "collide": true
+    },
+    {
+     "type": "jali_panel",
+     "x1": 9.296,
+     "x2": 11.217,
+     "z1": 11.735,
+     "z2": 11.811,
+     "y1": 0,
+     "y2": 3.018,
+     "collide": true
+    }
+   ]
+  },
+  {
+   "id": "SF",
+   "name": "Second Floor",
+   "y": 6.401,
+   "wallHeight": 3.048,
+   "slab": {
+    "rects": [
+     [
+      0.889,
+      0,
+      12.472,
+      4.42
+     ],
+     [
+      2.21,
+      4.42,
+      12.472,
+      11.684
+     ],
+     [
+      7.437,
+      11.684,
+      10.912,
+      12.924
+     ]
+    ],
+    "holes": [
+     [
+      7.138,
+      2.794,
+      10.186,
+      5.842
+     ],
+     [
+      2.438,
+      4.42,
+      5.563,
+      7.544
+     ]
+    ]
+   },
+   "rooms": [
+    {
+     "id": "sf-guest",
+     "name": "Guest Bedroom",
+     "type": "bedroom",
+     "floor": "wood",
+     "rects": [
+      [
+       1.118,
+       0.229,
+       5.385,
+       4.191
+      ]
+     ],
+     "planLabel": {
+      "text": "GUEST ROOM (size not legible)",
+      "w": null,
+      "d": null
+     }
+    },
+    {
+     "id": "sf-gtoilet",
+     "name": "Guest Toilet",
+     "type": "toilet",
+     "floor": "tile",
+     "rects": [
+      [
+       5.614,
+       0.229,
+       7.138,
+       2.667
+      ]
+     ],
+     "planLabel": {
+      "text": "5'-0\" x 8'-0\"",
+      "w": 1.524,
+      "d": 2.438
+     }
+    },
+    {
+     "id": "sf-shaft",
+     "name": "Shaft",
+     "type": "shaft",
+     "floor": "concrete",
+     "accessible": false,
+     "light": false,
+     "rects": [
+      [
+       7.366,
+       0.229,
+       9.093,
+       1.029
+      ]
+     ]
+    },
+    {
+     "id": "sf-shower",
+     "name": "Shower",
+     "type": "bathroom",
+     "floor": "tile",
+     "rects": [
+      [
+       7.366,
+       1.143,
+       9.093,
+       2.566
+      ]
+     ]
+    },
+    {
+     "id": "sf-toilet",
+     "name": "Master Toilet",
+     "type": "bathroom",
+     "floor": "tile",
+     "rects": [
+      [
+       9.207,
+       0.229,
+       12.243,
+       2.566
+      ]
+     ],
+     "planLabel": {
+      "text": "15'-0\" x 7'-8\"",
+      "w": 4.572,
+      "d": 2.337
+     }
+    },
+    {
+     "id": "sf-stair",
+     "name": "Staircase",
+     "type": "stair",
+     "floor": "none",
+     "light": false,
+     "rects": [
+      [
+       7.138,
+       2.794,
+       10.186,
+       5.842
+      ]
+     ]
+    },
+    {
+     "id": "sf-dressing",
+     "name": "Dressing",
+     "type": "dressing",
+     "floor": "wood",
+     "rects": [
+      [
+       10.414,
+       2.794,
+       12.243,
+       5.842
+      ]
+     ]
+    },
+    {
+     "id": "sf-corridor",
+     "name": "Lobby / Corridor",
+     "type": "corridor",
+     "floor": "marble",
+     "rects": [
+      [
+       5.614,
+       2.896,
+       7.138,
+       7.544
+      ],
+      [
+       5.563,
+       4.42,
+       5.614,
+       7.544
+      ]
+     ]
+    },
+    {
+     "id": "sf-void",
+     "name": "Atrium Void",
+     "type": "void",
+     "floor": "none",
+     "accessible": false,
+     "light": false,
+     "rects": [
+      [
+       2.438,
+       4.42,
+       5.563,
+       7.544
+      ]
+     ]
+    },
+    {
+     "id": "sf-balcony",
+     "name": "Balcony / Snooker Lounge",
+     "type": "balcony",
+     "floor": "deck",
+     "outdoor": true,
+     "rects": [
+      [
+       2.438,
+       7.544,
+       7.138,
+       11.455
+      ]
+     ]
+    },
+    {
+     "id": "sf-bedroom",
+     "name": "Bedroom (SF)",
+     "type": "bedroom",
+     "floor": "wood",
+     "rects": [
+      [
+       7.366,
+       6.071,
+       12.243,
+       11.455
+      ]
+     ],
+     "planLabel": {
+      "text": "16'-0\" wide",
+      "w": 4.877,
+      "d": null
+     }
+    },
+    {
+     "id": "sf-bedbalcony",
+     "name": "Bedroom Balcony",
+     "type": "balcony",
+     "floor": "stone",
+     "outdoor": true,
+     "light": false,
+     "rects": [
+      [
+       7.437,
+       11.684,
+       10.912,
+       12.924
+      ]
+     ]
+    }
+   ],
+   "walls": [
+    {
+     "id": "s-rear",
+     "x1": 0.889,
+     "z1": 0,
+     "x2": 12.472,
+     "z2": 0.229,
+     "openings": [
+      {
+       "type": "window",
+       "from": 1.829,
+       "to": 4.267
+      },
+      {
+       "type": "vent",
+       "from": 5.944,
+       "to": 6.858
+      },
+      {
+       "type": "vent",
+       "from": 10.82,
+       "to": 11.735
+      }
+     ]
+    },
+    {
+     "id": "s-W2",
+     "x1": 0.889,
+     "z1": 0.229,
+     "x2": 1.118,
+     "z2": 4.42,
+     "openings": [
+      {
+       "type": "window",
+       "from": 1.219,
+       "to": 3.353
+      }
+     ]
+    },
+    {
+     "id": "s-gst-s",
+     "x1": 1.118,
+     "z1": 4.191,
+     "x2": 5.614,
+     "z2": 4.42
+    },
+    {
+     "id": "s-gst-e",
+     "x1": 5.385,
+     "z1": 0.229,
+     "x2": 5.614,
+     "z2": 4.191,
+     "openings": [
+      {
+       "type": "door",
+       "from": 3.2,
+       "to": 4.054
+      }
+     ]
+    },
+    {
+     "id": "s-tl-s",
+     "x1": 5.614,
+     "z1": 2.667,
+     "x2": 7.138,
+     "z2": 2.896,
+     "openings": [
+      {
+       "type": "door",
+       "from": 5.852,
+       "to": 6.614
+      }
+     ]
+    },
+    {
+     "id": "s-F-tl",
+     "x1": 7.138,
+     "z1": 0.229,
+     "x2": 7.366,
+     "z2": 2.566
+    },
+    {
+     "id": "s-core-n",
+     "x1": 7.138,
+     "z1": 2.566,
+     "x2": 12.243,
+     "z2": 2.794,
+     "openings": [
+      {
+       "type": "door",
+       "from": 10.668,
+       "to": 11.43
+      }
+     ]
+    },
+    {
+     "id": "s-shaft",
+     "x1": 7.366,
+     "z1": 1.029,
+     "x2": 9.093,
+     "z2": 1.143
+    },
+    {
+     "id": "s-showerp",
+     "x1": 9.093,
+     "z1": 0.229,
+     "x2": 9.207,
+     "z2": 2.566,
+     "openings": [
+      {
+       "type": "opening",
+       "from": 1.372,
+       "to": 2.134
+      }
+     ]
+    },
+    {
+     "id": "s-east",
+     "x1": 12.243,
+     "z1": 0.229,
+     "x2": 12.472,
+     "z2": 11.684,
+     "openings": [
+      {
+       "type": "vent",
+       "from": 0.914,
+       "to": 1.676
+      },
+      {
+       "type": "window",
+       "from": 7.925,
+       "to": 9.449
+      }
+     ]
+    },
+    {
+     "id": "s-G",
+     "x1": 10.186,
+     "z1": 2.794,
+     "x2": 10.414,
+     "z2": 5.842
+    },
+    {
+     "id": "s-core-s",
+     "x1": 7.138,
+     "z1": 5.842,
+     "x2": 12.243,
+     "z2": 6.071,
+     "openings": [
+      {
+       "type": "opening",
+       "from": 10.546,
+       "to": 11.4
+      }
+     ]
+    },
+    {
+     "id": "s-F-bed",
+     "x1": 7.138,
+     "z1": 6.071,
+     "x2": 7.366,
+     "z2": 11.455,
+     "openings": [
+      {
+       "type": "door",
+       "from": 6.187,
+       "to": 7.01
+      },
+      {
+       "type": "slide",
+       "from": 9.053,
+       "to": 10.668
+      }
+     ]
+    },
+    {
+     "id": "s-B",
+     "x1": 2.21,
+     "z1": 4.42,
+     "x2": 2.438,
+     "z2": 7.544,
+     "openings": [
+      {
+       "type": "glazing",
+       "from": 4.572,
+       "to": 7.315,
+       "head": 2.896
+      }
+     ]
+    },
+    {
+     "id": "s-bed-front",
+     "x1": 7.138,
+     "z1": 11.455,
+     "x2": 12.472,
+     "z2": 11.684,
+     "openings": [
+      {
+       "type": "slide",
+       "from": 7.498,
+       "to": 8.9,
+       "head": 2.438
+      },
+      {
+       "type": "window",
+       "from": 9.083,
+       "to": 11.887,
+       "sill": 0.457,
+       "head": 2.438
+      }
+     ]
+    }
+   ],
+   "railings": [
+    {
+     "x1": 5.547,
+     "z1": 4.42,
+     "x2": 5.578,
+     "z2": 7.544
+    },
+    {
+     "x1": 2.438,
+     "z1": 7.529,
+     "x2": 5.578,
+     "z2": 7.559
+    },
+    {
+     "x1": 2.21,
+     "z1": 7.544,
+     "x2": 2.24,
+     "z2": 11.684
+    },
+    {
+     "x1": 2.24,
+     "z1": 11.653,
+     "x2": 7.138,
+     "z2": 11.684
+    },
+    {
+     "x1": 7.437,
+     "z1": 12.893,
+     "x2": 10.912,
+     "z2": 12.924
+    },
+    {
+     "x1": 7.437,
+     "z1": 11.684,
+     "x2": 7.468,
+     "z2": 12.893
+    },
+    {
+     "x1": 10.881,
+     "z1": 11.684,
+     "x2": 10.912,
+     "z2": 12.893
+    }
+   ],
+   "furniture": [
+    {
+     "type": "bed",
+     "room": "sf-guest",
+     "x": 3.658,
+     "z": 1.311,
+     "w": 1.707,
+     "d": 2.134,
+     "rot": 0
+    },
+    {
+     "type": "nightstand",
+     "room": "sf-guest",
+     "x": 2.545,
+     "z": 0.488,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 0
+    },
+    {
+     "type": "nightstand",
+     "room": "sf-guest",
+     "x": 4.77,
+     "z": 0.488,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 0
+    },
+    {
+     "type": "desk",
+     "room": "sf-guest",
+     "x": 2.896,
+     "z": 3.901,
+     "w": 1.219,
+     "d": 0.549,
+     "rot": 180
+    },
+    {
+     "type": "rug",
+     "room": "sf-guest",
+     "x": 3.658,
+     "z": 2.012,
+     "w": 2.134,
+     "d": 1.829,
+     "rot": 0
+    },
+    {
+     "type": "wc",
+     "room": "sf-gtoilet",
+     "x": 6.767,
+     "z": 1.311,
+     "w": 0.701,
+     "d": 0.457,
+     "rot": 270
+    },
+    {
+     "type": "basin",
+     "room": "sf-gtoilet",
+     "x": 6.919,
+     "z": 2.195,
+     "w": 0.427,
+     "d": 0.61,
+     "rot": 270
+    },
+    {
+     "type": "shower",
+     "room": "sf-gtoilet",
+     "x": 6.096,
+     "z": 0.61,
+     "w": 0.792,
+     "d": 0.732,
+     "rot": 0
+    },
+    {
+     "type": "shower",
+     "room": "sf-shower",
+     "x": 8.23,
+     "z": 1.859,
+     "w": 1.372,
+     "d": 1.158,
+     "rot": 0
+    },
+    {
+     "type": "bathtub",
+     "room": "sf-toilet",
+     "x": 11.841,
+     "z": 1.28,
+     "w": 0.792,
+     "d": 1.676,
+     "rot": 270
+    },
+    {
+     "type": "wc",
+     "room": "sf-toilet",
+     "x": 9.632,
+     "z": 0.594,
+     "w": 0.457,
+     "d": 0.701,
+     "rot": 0
+    },
+    {
+     "type": "basin",
+     "room": "sf-toilet",
+     "x": 10.607,
+     "z": 0.518,
+     "w": 0.914,
+     "d": 0.549,
+     "rot": 0
+    },
+    {
+     "type": "wardrobe",
+     "room": "sf-dressing",
+     "x": 11.939,
+     "z": 4.319,
+     "w": 0.594,
+     "d": 2.865,
+     "rot": 270
+    },
+    {
+     "type": "dressing_table",
+     "room": "sf-dressing",
+     "x": 10.653,
+     "z": 4.115,
+     "w": 0.457,
+     "d": 1.036,
+     "rot": 90
+    },
+    {
+     "type": "nightstand",
+     "room": "sf-bedroom",
+     "x": 11.994,
+     "z": 6.843,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 270
+    },
+    {
+     "type": "nightstand",
+     "room": "sf-bedroom",
+     "x": 11.994,
+     "z": 9.921,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 270
+    },
+    {
+     "type": "tv_unit",
+     "room": "sf-bedroom",
+     "x": 7.59,
+     "z": 8.016,
+     "w": 0.427,
+     "d": 1.707,
+     "rot": 90
+    },
+    {
+     "type": "plant",
+     "room": "sf-balcony",
+     "x": 6.828,
+     "z": 11.156,
+     "w": 0.488,
+     "d": 0.488,
+     "rot": 0
+    },
+    {
+     "type": "snooker_table",
+     "room": "sf-balcony",
+     "x": 4.785,
+     "z": 9.418,
+     "w": 2.621,
+     "d": 1.494,
+     "rot": 0
+    },
+    {
+     "type": "pendant",
+     "room": "sf-balcony",
+     "x": 4.785,
+     "z": 9.418,
+     "w": 1.829,
+     "d": 0.183,
+     "rot": 0
+    },
+    {
+     "type": "cue_rack",
+     "room": "sf-balcony",
+     "x": 7.093,
+     "z": 8.321,
+     "w": 0.091,
+     "d": 0.732,
+     "rot": 270
+    },
+    {
+     "type": "sofa",
+     "room": "sf-guest",
+     "x": 1.509,
+     "z": 2.256,
+     "w": 0.732,
+     "d": 1.768,
+     "rot": 90
+    },
+    {
+     "type": "art",
+     "room": "sf-guest",
+     "x": 5.364,
+     "z": 1.585,
+     "w": 0.03,
+     "d": 1.036,
+     "rot": 270,
+     "h": 0.792,
+     "y": 1.585,
+     "art": 1
+    },
+    {
+     "type": "armchair",
+     "room": "sf-bedroom",
+     "x": 9.449,
+     "z": 10.698,
+     "w": 0.792,
+     "d": 0.792,
+     "rot": 90
+    },
+    {
+     "type": "armchair",
+     "room": "sf-bedroom",
+     "x": 11.034,
+     "z": 10.698,
+     "w": 0.792,
+     "d": 0.792,
+     "rot": 270
+    },
+    {
+     "type": "side_table",
+     "room": "sf-bedroom",
+     "x": 10.241,
+     "z": 10.698,
+     "w": 0.61,
+     "d": 0.61,
+     "rot": 0
+    },
+    {
+     "type": "art",
+     "room": "sf-balcony",
+     "x": 7.12,
+     "z": 9.876,
+     "w": 0.03,
+     "d": 0.914,
+     "rot": 270,
+     "h": 0.732,
+     "y": 1.707,
+     "art": 2
+    },
+    {
+     "type": "tv_wall",
+     "room": "sf-guest",
+     "x": 4.267,
+     "z": 4.13,
+     "w": 1.402,
+     "d": 0.122,
+     "rot": 180
+    },
+    {
+     "type": "round_bed",
+     "room": "sf-bedroom",
+     "x": 11.019,
+     "z": 8.382,
+     "w": 2.438,
+     "d": 2.56,
+     "rot": 270
+    },
+    {
+     "type": "fabric_panel",
+     "room": "sf-bedroom",
+     "x": 12.219,
+     "z": 8.382,
+     "w": 0.046,
+     "d": 3.962,
+     "rot": 270
+    },
+    {
+     "type": "ceiling_cove",
+     "room": "sf-bedroom",
+     "x": 10.942,
+     "z": 8.382,
+     "w": 2.499,
+     "d": 2.499,
+     "rot": 0
+    },
+    {
+     "type": "rug_round",
+     "room": "sf-bedroom",
+     "x": 10.851,
+     "z": 8.382,
+     "w": 2.621,
+     "d": 2.621,
+     "rot": 0
+    },
+    {
+     "type": "planter",
+     "room": "sf-bedbalcony",
+     "x": 9.174,
+     "z": 12.725,
+     "w": 1.524,
+     "d": 0.274,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "sf-bedbalcony",
+     "x": 10.607,
+     "z": 12.558,
+     "w": 0.457,
+     "d": 0.457,
+     "rot": 0
+    },
+    {
+     "type": "plant",
+     "room": "sf-bedbalcony",
+     "x": 7.772,
+     "z": 12.558,
+     "w": 0.427,
+     "d": 0.427,
+     "rot": 0
+    }
+   ],
+   "features": [
+    {
+     "type": "proj_balcony",
+     "x1": 7.437,
+     "x2": 10.912,
+     "z1": 11.684,
+     "z2": 12.924
+    },
+    {
+     "type": "jali_panel",
+     "x1": 2.243,
+     "x2": 2.286,
+     "z1": 7.574,
+     "z2": 11.643,
+     "y1": 0,
+     "y2": 2.88,
+     "collide": true
+    },
+    {
+     "type": "jali_panel",
+     "x1": 2.286,
+     "x2": 7.117,
+     "z1": 11.735000000000001,
+     "z2": 11.796,
+     "y1": 0,
+     "y2": 2.758,
+     "collide": true
+    }
+   ]
+  },
+  {
+   "id": "TR",
+   "name": "Terrace Floor",
+   "y": 9.601,
+   "wallHeight": 3.048,
+   "slab": {
+    "rects": [
+     [
+      0.889,
+      0,
+      12.472,
+      4.42
+     ],
+     [
+      2.21,
+      4.42,
+      12.472,
+      11.684
+     ]
+    ],
+    "holes": [
+     [
+      7.138,
+      2.794,
+      10.186,
+      5.842
+     ]
+    ]
+   },
+   "rooms": [
+    {
+     "id": "tr-kitchen",
+     "name": "Terrace Kitchen",
+     "type": "kitchen",
+     "floor": "tile",
+     "rects": [
+      [
+       2.87,
+       0.229,
+       5.918,
+       2.768
+      ]
+     ],
+     "planLabel": {
+      "text": "10'-0\" x 8'-4\"",
+      "w": 3.048,
+      "d": 2.54
+     }
+    },
+    {
+     "id": "tr-utility",
+     "name": "Utility / Wash",
+     "type": "utility",
+     "floor": "tile",
+     "rects": [
+      [
+       6.147,
+       0.229,
+       7.138,
+       2.768
+      ]
+     ]
+    },
+    {
+     "id": "tr-living",
+     "name": "Terrace Gym",
+     "type": "gym",
+     "floor": "wood",
+     "rects": [
+      [
+       2.87,
+       2.768,
+       7.138,
+       9.474
+      ]
+     ],
+     "planLabel": {
+      "text": "14'-0\" x 22'-0\"",
+      "w": 4.267,
+      "d": 6.706
+     }
+    },
+    {
+     "id": "tr-ctoilet",
+     "name": "Common Toilet",
+     "type": "toilet",
+     "floor": "tile",
+     "rects": [
+      [
+       7.366,
+       1.143,
+       9.093,
+       2.566
+      ]
+     ],
+     "planLabel": {
+      "text": "4'-0\" x 8'-0\"",
+      "w": 1.219,
+      "d": 2.438
+     }
+    },
+    {
+     "id": "tr-shaft",
+     "name": "Shaft",
+     "type": "shaft",
+     "floor": "concrete",
+     "accessible": false,
+     "light": false,
+     "rects": [
+      [
+       7.366,
+       0.229,
+       9.093,
+       1.029
+      ]
+     ]
+    },
+    {
+     "id": "tr-stair",
+     "name": "Stair Cabin",
+     "type": "stair",
+     "floor": "none",
+     "light": false,
+     "rects": [
+      [
+       7.138,
+       2.794,
+       10.186,
+       5.842
+      ]
+     ]
+    },
+    {
+     "id": "tr-pergola",
+     "name": "Pergola Deck",
+     "type": "terrace",
+     "floor": "deck",
+     "outdoor": true,
+     "rects": [
+      [
+       7.366,
+       6.071,
+       12.243,
+       11.455
+      ]
+     ]
+    },
+    {
+     "id": "tr-terrace",
+     "name": "Open Terrace",
+     "type": "terrace",
+     "floor": "stone",
+     "outdoor": true,
+     "light": false,
+     "rects": [
+      [
+       9.322,
+       0.229,
+       12.243,
+       2.566
+      ],
+      [
+       10.414,
+       2.566,
+       12.243,
+       6.071
+      ],
+      [
+       2.642,
+       9.703,
+       7.366,
+       11.455
+      ]
+     ]
+    },
+    {
+     "id": "tr-roofwest",
+     "name": "Roof over Guest Room",
+     "type": "terrace",
+     "floor": "concrete",
+     "outdoor": true,
+     "accessible": false,
+     "light": false,
+     "rects": [
+      [
+       1.118,
+       0.229,
+       2.642,
+       4.191
+      ]
+     ]
+    }
+   ],
+   "walls": [
+    {
+     "id": "t-rear",
+     "x1": 2.642,
+     "z1": 0,
+     "x2": 9.322,
+     "z2": 0.229,
+     "openings": [
+      {
+       "type": "window",
+       "from": 3.658,
+       "to": 5.182,
+       "sill": 1.067
+      },
+      {
+       "type": "vent",
+       "from": 6.401,
+       "to": 7.01
+      }
+     ]
+    },
+    {
+     "id": "t-W",
+     "x1": 2.642,
+     "z1": 0.229,
+     "x2": 2.87,
+     "z2": 9.703,
+     "openings": [
+      {
+       "type": "window",
+       "from": 0.914,
+       "to": 2.134,
+       "sill": 1.067
+      },
+      {
+       "type": "vent",
+       "from": 3.353,
+       "to": 7.925,
+       "sill": 2.438,
+       "head": 2.896
+      }
+     ]
+    },
+    {
+     "id": "t-ku",
+     "x1": 5.918,
+     "z1": 0.229,
+     "x2": 6.147,
+     "z2": 1.829
+    },
+    {
+     "id": "t-F",
+     "x1": 7.138,
+     "z1": 0.229,
+     "x2": 7.366,
+     "z2": 9.703,
+     "openings": [
+      {
+       "type": "door",
+       "from": 1.524,
+       "to": 2.286
+      },
+      {
+       "type": "opening",
+       "from": 4.633,
+       "to": 5.761
+      },
+      {
+       "type": "slide",
+       "from": 7.315,
+       "to": 8.839
+      }
+     ]
+    },
+    {
+     "id": "t-shaft",
+     "x1": 7.366,
+     "z1": 1.029,
+     "x2": 9.093,
+     "z2": 1.143
+    },
+    {
+     "id": "t-tl-e",
+     "x1": 9.093,
+     "z1": 0.229,
+     "x2": 9.322,
+     "z2": 2.566,
+     "openings": [
+      {
+       "type": "vent",
+       "from": 1.524,
+       "to": 2.286
+      }
+     ]
+    },
+    {
+     "id": "t-core-n",
+     "x1": 7.366,
+     "z1": 2.566,
+     "x2": 10.414,
+     "z2": 2.794
+    },
+    {
+     "id": "t-G",
+     "x1": 10.186,
+     "z1": 2.794,
+     "x2": 10.414,
+     "z2": 6.071,
+     "openings": [
+      {
+       "type": "window",
+       "from": 3.353,
+       "to": 5.182
+      }
+     ]
+    },
+    {
+     "id": "t-core-s",
+     "x1": 7.366,
+     "z1": 5.842,
+     "x2": 10.186,
+     "z2": 6.071,
+     "openings": [
+      {
+       "type": "window",
+       "from": 7.925,
+       "to": 9.449
+      }
+     ]
+    },
+    {
+     "id": "t-front",
+     "x1": 2.642,
+     "z1": 9.474,
+     "x2": 7.138,
+     "z2": 9.703,
+     "openings": [
+      {
+       "type": "slide",
+       "from": 3.353,
+       "to": 6.401
+      }
+     ]
+    },
+    {
+     "id": "p-rear-w",
+     "x1": 0.889,
+     "z1": 0,
+     "x2": 2.642,
+     "z2": 0.229,
+     "h": 1.067,
+     "mat": "parapet"
+    },
+    {
+     "id": "p-rear-e",
+     "x1": 9.322,
+     "z1": 0,
+     "x2": 12.472,
+     "z2": 0.229,
+     "h": 1.067,
+     "mat": "parapet"
+    },
+    {
+     "id": "p-W2",
+     "x1": 0.889,
+     "z1": 0.229,
+     "x2": 1.118,
+     "z2": 4.42,
+     "h": 1.067,
+     "mat": "parapet"
+    },
+    {
+     "id": "p-w-s",
+     "x1": 1.118,
+     "z1": 4.191,
+     "x2": 2.642,
+     "z2": 4.42,
+     "h": 1.067,
+     "mat": "parapet"
+    },
+    {
+     "id": "p-B",
+     "x1": 2.21,
+     "z1": 4.42,
+     "x2": 2.438,
+     "z2": 11.684,
+     "h": 1.067,
+     "mat": "parapet"
+    },
+    {
+     "id": "p-east",
+     "x1": 12.243,
+     "z1": 0.229,
+     "x2": 12.472,
+     "z2": 11.684,
+     "h": 1.067,
+     "mat": "parapet"
+    }
+   ],
+   "railings": [
+    {
+     "x1": 2.438,
+     "z1": 11.653,
+     "x2": 12.243,
+     "z2": 11.684
+    }
+   ],
+   "furniture": [
+    {
+     "type": "counter",
+     "room": "tr-kitchen",
+     "x": 4.054,
+     "z": 0.533,
+     "w": 2.377,
+     "d": 0.61,
+     "rot": 0,
+     "hob": 4.389
+    },
+    {
+     "type": "fridge",
+     "room": "tr-kitchen",
+     "x": 5.593,
+     "z": 0.594,
+     "w": 0.61,
+     "d": 0.732,
+     "rot": 0
+    },
+    {
+     "type": "washing_machine",
+     "room": "tr-utility",
+     "x": 6.858,
+     "z": 0.488,
+     "w": 0.518,
+     "d": 0.518,
+     "rot": 0
+    },
+    {
+     "type": "basin",
+     "room": "tr-utility",
+     "x": 6.37,
+     "z": 0.457,
+     "w": 0.427,
+     "d": 0.427,
+     "rot": 0
+    },
+    {
+     "type": "wc",
+     "room": "tr-ctoilet",
+     "x": 8.702,
+     "z": 1.524,
+     "w": 0.701,
+     "d": 0.457,
+     "rot": 270
+    },
+    {
+     "type": "basin",
+     "room": "tr-ctoilet",
+     "x": 8.016,
+     "z": 2.362,
+     "w": 0.61,
+     "d": 0.366,
+     "rot": 180
+    },
+    {
+     "type": "outdoor_table",
+     "room": "tr-terrace",
+     "x": 3.78,
+     "z": 10.577,
+     "w": 1.341,
+     "d": 1.341,
+     "rot": 0
+    },
+    {
+     "type": "planter",
+     "room": "tr-terrace",
+     "x": 6.584,
+     "z": 11.308,
+     "w": 0.914,
+     "d": 0.305,
+     "rot": 0
+    },
+    {
+     "type": "lounger",
+     "room": "tr-pergola",
+     "x": 10.058,
+     "z": 9.449,
+     "w": 0.671,
+     "d": 1.829,
+     "rot": 0
+    },
+    {
+     "type": "lounger",
+     "room": "tr-pergola",
+     "x": 10.973,
+     "z": 9.449,
+     "w": 0.671,
+     "d": 1.829,
+     "rot": 0
+    },
+    {
+     "type": "outdoor_table",
+     "room": "tr-pergola",
+     "x": 9.144,
+     "z": 7.468,
+     "w": 1.524,
+     "d": 1.524,
+     "rot": 0
+    },
+    {
+     "type": "planter",
+     "room": "tr-pergola",
+     "x": 12.009,
+     "z": 8.382,
+     "w": 0.305,
+     "d": 3.048,
+     "rot": 270
+    },
+    {
+     "type": "plant",
+     "room": "tr-pergola",
+     "x": 8.291,
+     "z": 11.125,
+     "w": 0.488,
+     "d": 0.488,
+     "rot": 0
+    },
+    {
+     "type": "island",
+     "room": "tr-kitchen",
+     "x": 4.846,
+     "z": 2.316,
+     "w": 2.134,
+     "d": 0.732,
+     "rot": 0,
+     "sink": 4.663
+    },
+    {
+     "type": "gym_mat",
+     "room": "tr-living",
+     "x": 4.999,
+     "z": 6.279,
+     "w": 4.206,
+     "d": 6.34,
+     "rot": 0
+    },
+    {
+     "type": "mirror_wall",
+     "room": "tr-living",
+     "x": 2.886,
+     "z": 5.639,
+     "w": 0.03,
+     "d": 4.572,
+     "rot": 90
+    },
+    {
+     "type": "treadmill",
+     "room": "tr-living",
+     "x": 5.364,
+     "z": 3.78,
+     "w": 1.89,
+     "d": 0.853,
+     "rot": 270
+    },
+    {
+     "type": "dumbbell_rack",
+     "room": "tr-living",
+     "x": 3.17,
+     "z": 5.791,
+     "w": 0.488,
+     "d": 1.524,
+     "rot": 90
+    },
+    {
+     "type": "weight_bench",
+     "room": "tr-living",
+     "x": 4.45,
+     "z": 5.791,
+     "w": 1.341,
+     "d": 0.427,
+     "rot": 90
+    },
+    {
+     "type": "punching_bag",
+     "room": "tr-living",
+     "x": 6.035,
+     "z": 7.864,
+     "w": 0.396,
+     "d": 0.396,
+     "rot": 0,
+     "ceil": 3.048
+    },
+    {
+     "type": "yoga_mat",
+     "room": "tr-living",
+     "x": 3.749,
+     "z": 8.321,
+     "w": 0.61,
+     "d": 1.829,
+     "rot": 0
+    },
+    {
+     "type": "yoga_mat",
+     "room": "tr-living",
+     "x": 4.511,
+     "z": 8.321,
+     "w": 0.61,
+     "d": 1.829,
+     "rot": 0,
+     "alt": true
+    },
+    {
+     "type": "plant",
+     "room": "tr-living",
+     "x": 3.139,
+     "z": 9.205,
+     "w": 0.427,
+     "d": 0.427,
+     "rot": 0
+    }
+   ],
+   "features": [
+    {
+     "type": "pergola",
+     "x1": 7.498,
+     "z1": 6.203,
+     "x2": 12.116,
+     "z2": 11.323,
+     "h": 2.743,
+     "posts": true,
+     "slats": "x"
+    },
+    {
+     "type": "cat_ladder",
+     "x1": 10.415,
+     "x2": 10.668,
+     "z1": 4.755,
+     "z2": 5.304,
+     "y1": 0,
+     "y2": 3.353,
+     "collide": true
+    },
+    {
+     "type": "odu_zone",
+     "x1": 9.323,
+     "x2": 10.663,
+     "z1": 0.27949999999999997,
+     "z2": 1.1445,
+     "y1": 0,
+     "y2": 1.807,
+     "collide": true,
+     "hidden": true
+    },
+    {
+     "type": "odu_zone",
+     "x1": 10.685,
+     "x2": 12.025,
+     "z1": 0.27949999999999997,
+     "z2": 1.1445,
+     "y1": 0,
+     "y2": 1.807,
+     "collide": true,
+     "hidden": true
+    }
+   ]
+  }
+ ],
+ "exterior": {
+  "eave": {
+   "x1": 0.914,
+   "x2": 12.771,
+   "zBack": 11.684,
+   "zFront": 14.173,
+   "top": 9.601,
+   "plate": 0.183,
+   "soffitInner": 9.174,
+   "soffitOuter": 9.357,
+   "wedge": {
+    "x1": 0.914,
+    "x2": 2.21,
+    "z1": 7.544,
+    "outer": 9.357,
+    "inner": 8.382
+   }
+  },
+  "frameRight": {
+   "x1": 12.472,
+   "x2": 12.771,
+   "z1": 11.684,
+   "z2": 14.173,
+   "y1": 2.804,
+   "y2": 9.601
+  },
+  "fin": {
+   "x1": 12.472,
+   "x2": 12.674,
+   "z1": 5.486,
+   "z2": 11.684,
+   "y1": 3.2,
+   "y2": 12.802
+  },
+  "fascia": [
+   [
+    1.397,
+    13.919,
+    12.472,
+    14.021
+   ],
+   [
+    1.295,
+    11.684,
+    1.397,
+    14.021
+   ]
+  ],
+  "fasciaY": [
+   2.804,
+   3.246
+  ],
+  "soffits": [
+   [
+    3.759,
+    12.268,
+    12.472,
+    13.919
+   ],
+   [
+    6.82,
+    10.16,
+    12.472,
+    12.268
+   ],
+   [
+    1.397,
+    13.716,
+    3.759,
+    13.919
+   ]
+  ],
+  "soffitY": 3.039,
+  "ledgePlanter": {
+   "x1": 1.402,
+   "x2": 12.466,
+   "z1": 14.021,
+   "z2": 14.158,
+   "y": 2.926
+  },
+  "fence": {
+   "pillar": 0.229,
+   "pitch": 1.265,
+   "h": 2.195,
+   "panelY": [
+    0.366,
+    2.012
+   ],
+   "planter": [
+    0.274,
+    15.591,
+    4.999,
+    15.972
+   ]
+  },
+  "pedGate": {
+   "x1": 5.304,
+   "x2": 6.706,
+   "z": 15.453,
+   "h": 2.012
+  },
+  "carGate": {
+   "x1": 6.949,
+   "x2": 12.243,
+   "z": 15.453,
+   "h": 2.012
+  },
+  "numberPillar": [
+   6.706,
+   15.341,
+   6.949,
+   15.57
+  ],
+  "palms": [
+   [
+    -1.524,
+    16.764
+   ],
+   [
+    4.267,
+    16.916
+   ],
+   [
+    13.411,
+    16.764
+   ],
+   [
+    0.671,
+    14.326
+   ],
+   [
+    -2.438,
+    9.144
+   ]
+  ],
+  "trees": [
+   [
+    -1.829,
+    18.898
+   ],
+   [
+    9.144,
+    18.898
+   ],
+   [
+    16.764,
+    15.24
+   ],
+   [
+    -3.658,
+    5.486
+   ]
+  ],
+  "fans": [
+   [
+    9.601,
+    12.649
+   ],
+   [
+    5.243,
+    13.716
+   ]
+  ]
+ },
+ "presentation": [
+  {
+   "id": "ext",
+   "kind": "exterior",
+   "title": "The Residence",
+   "caption": "G+2 home with a roof terrace, front balcony and jali screen on the street facade.",
+   "camera": [
+    6.248,
+    2.134,
+    34.138
+   ],
+   "target": [
+    6.248,
+    5.182,
+    12.192
+   ],
+   "orbit": 0.18
+  },
+  {
+   "id": "elev",
+   "kind": "exterior",
+   "title": "Street Elevation",
+   "caption": "Stone-clad facade with full-height CNC jali screens, a slanted timber soffit and slatted gates.",
+   "camera": [
+    14.021,
+    1.524,
+    24.384
+   ],
+   "target": [
+    5.486,
+    4.877,
+    13.411
+   ],
+   "orbit": 0.12
+  },
+  {
+   "id": "living",
+   "level": "GF",
+   "title": "Living & Foyer",
+   "caption": "Living room off the foyer, beside the 9.1 m courtyard garden.",
+   "eye": [
+    3.414,
+    11.46
+   ],
+   "look": [
+    6.401,
+    8.382
+   ],
+   "dolly": 0.61
+  },
+  {
+   "id": "dining",
+   "level": "GF",
+   "title": "Dining under the atrium",
+   "caption": "Six-seat dining under the triple-height void, with full-height glazing to the courtyard.",
+   "eye": [
+    6.462,
+    7.01
+   ],
+   "look": [
+    3.353,
+    3.353
+   ],
+   "dolly": 0.61
+  },
+  {
+   "id": "kitchen",
+   "level": "GF",
+   "title": "Open Kitchen",
+   "caption": "Rear counter with hob, tall fridge unit and a peninsula with sink and breakfast ledge.",
+   "eye": [
+    6.279,
+    3.84
+   ],
+   "look": [
+    3.048,
+    1.524
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "utility",
+   "level": "GF",
+   "title": "Utility / Laundry",
+   "caption": "Stacked washer-dryer, utility sink and full-height storage, with direct access to the courtyard.",
+   "eye": [
+    2.057,
+    2.545
+   ],
+   "look": [
+    0.366,
+    0.792
+   ],
+   "dolly": 0.076
+  },
+  {
+   "id": "gfbed",
+   "level": "GF",
+   "title": "Ground-floor Bedroom",
+   "caption": "Bedroom with walk-through dressing and attached toilet.",
+   "eye": [
+    7.711,
+    9.632
+   ],
+   "look": [
+    10.211,
+    6.553
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "fflive",
+   "level": "FF",
+   "title": "Family Lounge",
+   "caption": "First-floor lounge opening onto the full-width front balcony.",
+   "eye": [
+    6.645,
+    7.925
+   ],
+   "look": [
+    3.81,
+    10.973
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "office",
+   "level": "FF",
+   "title": "Home Office",
+   "caption": "Study / office with a meeting table and reading corner.",
+   "eye": [
+    5.364,
+    3.719
+   ],
+   "look": [
+    1.829,
+    0.914
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "ffbed",
+   "level": "FF",
+   "title": "Master Bedroom",
+   "caption": "Master bedroom with sitting area, dressing and a toilet with bathtub.",
+   "eye": [
+    7.742,
+    11.095
+   ],
+   "look": [
+    11.278,
+    7.468
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "snooker",
+   "level": "SF",
+   "title": "Snooker Lounge",
+   "caption": "Covered second-floor balcony set up as a games lounge.",
+   "eye": [
+    6.767,
+    11.156
+   ],
+   "look": [
+    3.81,
+    8.687
+   ],
+   "dolly": 0.366
+  },
+  {
+   "id": "sfbed",
+   "level": "SF",
+   "title": "Second-floor Bedroom",
+   "caption": "Bedroom with a round bed and a window seating corner.",
+   "eye": [
+    7.742,
+    6.584
+   ],
+   "look": [
+    10.363,
+    9.754
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "guest",
+   "level": "SF",
+   "title": "Guest Bedroom",
+   "caption": "Guest bedroom with its own toilet.",
+   "eye": [
+    4.999,
+    3.84
+   ],
+   "look": [
+    2.134,
+    0.914
+   ],
+   "dolly": 0.366
+  },
+  {
+   "id": "gym",
+   "level": "TR",
+   "title": "Terrace Gym",
+   "caption": "Terrace room fitted as a home gym, opening onto the pergola deck.",
+   "eye": [
+    6.462,
+    9.083
+   ],
+   "look": [
+    3.658,
+    4.267
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "terrace",
+   "level": "TR",
+   "title": "Roof Terrace",
+   "caption": "Open terrace and pergola deck.",
+   "eye": [
+    11.278,
+    10.973
+   ],
+   "look": [
+    7.315,
+    7.315
+   ],
+   "dolly": 0.457
+  },
+  {
+   "id": "plant",
+   "level": "TR",
+   "title": "Terrace Services",
+   "caption": "VRV outdoor units on the rear terrace and two 2,000 L overhead tanks on the stair-cabin roof.",
+   "eye": [
+    11.46,
+    4.145
+   ],
+   "look": [
+    9.906,
+    0.457
+   ],
+   "dolly": 0.305
+  }
+ ],
+ "hvac": {
+  "system": "VRV/VRF variable-refrigerant-flow, heat-pump, two outdoor systems",
+  "refrigerant": "R410A",
+  "designOutdoor": "Bilaspur summer design ~44 \u00b0C DB",
+  "indoorDesign": "24 \u00b0C DB / 50% RH",
+  "falseCeiling": 2.74,
+  "riser": {
+   "x": 8.321,
+   "z": 0.579
+  },
+  "routeY": 2.9,
+  "indoorUnits": [
+   {
+    "id": "IDU-01",
+    "level": "GF",
+    "room": "gf-kitchen",
+    "family": "roundflow",
+    "kw": 5.6,
+    "x": 5.105,
+    "z": 1.22
+   },
+   {
+    "id": "IDU-02",
+    "level": "GF",
+    "room": "gf-dining",
+    "family": "roundflow",
+    "kw": 7.1,
+    "x": 5.867,
+    "z": 4.521
+   },
+   {
+    "id": "IDU-03",
+    "level": "GF",
+    "room": "gf-dining",
+    "family": "roundflow",
+    "kw": 7.1,
+    "x": 3.429,
+    "z": 6.045
+   },
+   {
+    "id": "IDU-04",
+    "level": "GF",
+    "room": "gf-dressing",
+    "family": "compact",
+    "kw": 1.7,
+    "x": 11.405,
+    "z": 4.242
+   },
+   {
+    "id": "IDU-05",
+    "level": "GF",
+    "room": "gf-bedroom",
+    "family": "roundflow",
+    "kw": 5.6,
+    "x": 9.881,
+    "z": 8.128
+   },
+   {
+    "id": "IDU-06",
+    "level": "GF",
+    "room": "gf-living",
+    "family": "roundflow",
+    "kw": 11.2,
+    "x": 4.648,
+    "z": 9.5
+   },
+   {
+    "id": "IDU-07",
+    "level": "FF",
+    "room": "ff-office",
+    "family": "roundflow",
+    "kw": 7.1,
+    "x": 3.328,
+    "z": 2.134
+   },
+   {
+    "id": "IDU-08",
+    "level": "FF",
+    "room": "ff-dressing",
+    "family": "compact",
+    "kw": 1.7,
+    "x": 11.405,
+    "z": 4.242
+   },
+   {
+    "id": "IDU-09",
+    "level": "FF",
+    "room": "ff-corridor",
+    "family": "compact",
+    "kw": 1.7,
+    "x": 6.299,
+    "z": 5.309
+   },
+   {
+    "id": "IDU-10",
+    "level": "FF",
+    "room": "ff-living",
+    "family": "roundflow",
+    "kw": 11.2,
+    "x": 4.8,
+    "z": 9.601
+   },
+   {
+    "id": "IDU-11",
+    "level": "FF",
+    "room": "ff-bedroom",
+    "family": "roundflow",
+    "kw": 4.5,
+    "x": 9.423,
+    "z": 7.214
+   },
+   {
+    "id": "IDU-12",
+    "level": "FF",
+    "room": "ff-bedroom",
+    "family": "roundflow",
+    "kw": 4.5,
+    "x": 9.881,
+    "z": 9.957
+   },
+   {
+    "id": "IDU-13",
+    "level": "SF",
+    "room": "sf-guest",
+    "family": "roundflow",
+    "kw": 7.1,
+    "x": 3.175,
+    "z": 2.591
+   },
+   {
+    "id": "IDU-14",
+    "level": "SF",
+    "room": "sf-dressing",
+    "family": "compact",
+    "kw": 1.7,
+    "x": 11.405,
+    "z": 4.242
+   },
+   {
+    "id": "IDU-15",
+    "level": "SF",
+    "room": "sf-corridor",
+    "family": "compact",
+    "kw": 1.7,
+    "x": 6.3,
+    "z": 5.106
+   },
+   {
+    "id": "IDU-16",
+    "level": "SF",
+    "room": "sf-bedroom",
+    "family": "roundflow",
+    "kw": 7.1,
+    "x": 9.423,
+    "z": 7.366
+   },
+   {
+    "id": "IDU-17",
+    "level": "SF",
+    "room": "sf-bedroom",
+    "family": "roundflow",
+    "kw": 7.1,
+    "x": 9.881,
+    "z": 10.11
+   },
+   {
+    "id": "IDU-18",
+    "level": "TR",
+    "room": "tr-kitchen",
+    "family": "compact",
+    "kw": 4.5,
+    "x": 4.47,
+    "z": 1.524
+   },
+   {
+    "id": "IDU-19",
+    "level": "TR",
+    "room": "tr-living",
+    "family": "roundflow",
+    "kw": 9,
+    "x": 5.08,
+    "z": 4.521
+   },
+   {
+    "id": "IDU-20",
+    "level": "TR",
+    "room": "tr-living",
+    "family": "roundflow",
+    "kw": 9,
+    "x": 4.927,
+    "z": 7.873
+   }
+  ],
+  "outdoorUnits": [
+   {
+    "id": "ODU-1",
+    "serves": [
+     "GF",
+     "FF"
+    ],
+    "hp": 20,
+    "kw": 56,
+    "w": 1.24,
+    "d": 0.765,
+    "h": 1.657,
+    "kg": 320,
+    "x": 9.993,
+    "z": 0.712,
+    "plinth": 0.15
+   },
+   {
+    "id": "ODU-2",
+    "serves": [
+     "SF",
+     "TR"
+    ],
+    "hp": 14,
+    "kw": 40,
+    "w": 1.24,
+    "d": 0.765,
+    "h": 1.657,
+    "kg": 280,
+    "x": 11.355,
+    "z": 0.712,
+    "plinth": 0.15
+   }
+  ]
+ },
+ "water": {
+  "tanks": [
+   {
+    "id": "OHT-1",
+    "litres": 2000,
+    "diameter": 1.5,
+    "height": 1.4,
+    "emptyKg": 45,
+    "x": 8.342,
+    "z": 1.524,
+    "pedestal": 0.45
+   },
+   {
+    "id": "OHT-2",
+    "litres": 2000,
+    "diameter": 1.5,
+    "height": 1.4,
+    "emptyKg": 45,
+    "x": 8.891,
+    "z": 4.435,
+    "pedestal": 0.45
+   }
+  ],
+  "downtake": {
+   "x": 8.321,
+   "z": 0.732
+  },
+  "ladder": {
+   "x1": 10.415,
+   "x2": 10.668,
+   "z1": 4.755,
+   "z2": 5.304
+  }
+ }
+}

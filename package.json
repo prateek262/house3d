@@ -1,0 +1,19 @@
+{
+  "name": "tandon-residence-3d",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive 3D walkthrough of Pratik Tandon's Residence, Bilaspur (Ar. Mithlesh Sinha) built with Three.js",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "validate": "node scripts/validate.mjs"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
