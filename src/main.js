@@ -11,6 +11,7 @@ import { Lighting, EnvBaker, TIMES } from './scene/lighting.js';
 import { Post } from './scene/post.js';
 import { Walker, setupTouch } from './controls/walker.js';
 import { hvacSummary, IDU, DIVERSITY, tankLoad } from './core/hvac.js';
+import { solarSummary, SPECIFIC_YIELD } from './core/solar.js';
 
 // The structured model is authored in metres; the engine runs in internal feet units (see core/units.js).
 const house = toSceneUnits(houseMetric);
@@ -455,8 +456,22 @@ function buildFacts() {
   const rooms = LV.flatMap((L) => L.rooms);
   const beds = rooms.filter((r) => r.type === 'bedroom').length;
   const wcs = rooms.filter((r) => /toilet/i.test(r.name)).length;
-  const facts = [['Levels', 'G+2 + terrace'], ['Bedrooms', beds], ['Toilets', wcs], ['Internal area', `≈ ${Math.round(indicativeArea() * M_PER_FT * M_PER_FT)} m²*`], ['', 'Courtyard garden'], ['', 'Car parking'], ['', 'Roof terrace']];
+  const facts = [['Levels', 'G+2 + terrace'], ['Bedrooms', beds], ['Toilets', wcs], ['Internal area', `≈ ${Math.round(indicativeArea() * M_PER_FT * M_PER_FT)} m²*`], ['', 'Courtyard garden'], ['', 'Car parking'], ['', 'Roof terrace'], ['', `Rooftop solar provision ≈ ${SOL ? SOL.kwp.toFixed(1) : '5'} kWp`]];
   $('facts').innerHTML = facts.map(([k, v]) => `<li>${k ? `<b>${v}</b> ${k.toLowerCase()}` : v}</li>`).join('');
+}
+const SOL = solarSummary(house);
+function solarHtml() { return ''; }
+function solarSection() {
+  if (!SOL) return '';
+  const S = house.solar; const sh = SOL.shading;
+  return `<h4>Rooftop solar PV (provision)</h4>
+    <table class="dims"><tr><th>Array</th><td>${SOL.count} × ${S.module.wp} Wp ${S.module.tech} = <b>${SOL.kwp.toFixed(2)} kWp</b> (${SOL.areaM2.toFixed(1)} m² of modules)</td></tr>
+    <tr><th>Mounting</th><td>Elevated hot-dip GI structure on RCC blocks over the terrace-room roof, ${S.tilt}° tilt facing south (assumed orientation), low edge ${(S.lowEdge * M_PER_FT).toFixed(2)} m above the roof, 3 rows with shade-free spacing</td></tr>
+    <tr><th>Shading</th><td>${sh.worst.frac > 0 ? `max ${Math.round(sh.worst.frac * 100)}% at ${sh.worst.label}` : 'shade-free 09:00–15:00 on all four reference days'} · annual shading loss ≈ ${(sh.loss * 100).toFixed(1)}% (tanks and inter-row)</td></tr>
+    <tr><th>Inverter</th><td>${S.inverter.label}, on the solid north face of the stair-cabin wall behind the VRV outdoor units</td></tr>
+    <tr><th>Grid</th><td>${S.meter}; ${S.earthing}</td></tr>
+    <tr><th>Est. generation</th><td>≈ ${Math.round(SOL.annualKWh).toLocaleString('en-IN')} kWh/yr (≈ ${Math.round(SOL.annualKWh / 365)} kWh/day), indicative at ${SPECIFIC_YIELD} kWh/kWp/yr</td></tr>
+    <tr><th>Future</th><td>${S.future}</td></tr></table>`;
 }
 function hvacHtml() {
   if (!HV) return '';
@@ -489,6 +504,7 @@ function buildInfo() {
     <table class="dims"><tr><th>Level</th><th>Room</th><th>Modelled (clear)</th><th>Area</th><th>Drawing label</th><th></th></tr>${rows.join('')}</table>
     <p class="muted small">* Indicative internal area = sum of modelled clear room areas (excl. walls, voids, shafts, open areas): ${fmtArea(indicativeArea())}. Not a surveyed or saleable area.</p>
     ${hvacHtml()}
+    ${solarSection()}
     <h4>Architectural inconsistencies found in the drawings</h4>
     <ul>${house.inconsistencies.map((i) => `<li><span class="sev ${i.severity}">${i.severity}</span><b>${i.id}</b> ${i.text}</li>`).join('')}</ul>
     <h4>Assumptions</h4>

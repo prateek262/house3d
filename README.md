@@ -158,6 +158,21 @@ The presentation has a new **Terrace Services** shot. All AC figures are indicat
 
 - The opening from the GF living room to the green area is now a window (0.91 m sill), not a sliding door, as the client confirmed. The green area is still reached from the front yard passage and from the utility room's door.
 
+## Rooftop solar provision (v12)
+
+| Item | Provision |
+|---|---|
+| Array | 9 × 580 Wp n-type TOPCon modules (2,278 × 1,134 mm) = **5.22 kWp**, 3 rows of 3 on the terrace-room roof (12.80 m) |
+| Mounting | Elevated hot-dip GI structure on RCC blocks: 22° tilt (≈ latitude), facing south (assumed orientation, A5), low edge 0.60 m above the roof, 1.2 m between rows, ≥ 0.3 m from roof edges, ≥ 0.6 m from the tanks, ladder landing kept clear |
+| Shading | Sun-path ray-casting against both tanks and the other rows on 21 Mar / Jun / Sep / Dec: **shade-free 09:00–15:00**, annual shading loss ≈ 0.2% |
+| Electrical | 5 kW on-grid string inverter + DCDB/ACDB with SPDs on the solid north face of the stair-cabin wall, behind the VRV outdoor units. DC runs over the roof; AC runs down the plumbing shaft to the GF main DB / net meter. Separate DC/AC earth pits and a lightning arrester |
+| Yield | ≈ 7,800 kWh/yr (≈ 21 kWh/day), indicative at 1,500 kWh/kWp/yr |
+| Future | Spare conduit and anchors for ~2 kWp more (e.g. bifacial glass-glass panels on the pergola) |
+
+- In the app: a new **Rooftop Solar** presentation shot, a *Specs & checks* section, and the services X-ray toggle showing solar DC (yellow) and AC (magenta).
+- The validator checks roof edge clearance, tank and ladder clearance, panel overlaps, shading by hour, DC/AC ratio and dead load. `VALIDATION_REPORT.md` has an hourly sun-elevation / shading table.
+- Also fixed: walls that are only partly exposed (e.g. the stair cabin's north wall) now get the dark exterior cladding on their exposed run.
+
 ## Rendering performance and mobile
 
 Quality is detected automatically. You can override it with `?quality=high|balanced|performance` or from the panel; the choice is remembered.
@@ -194,6 +209,7 @@ house3d/
    ├─ style.css             dark-glass UI
    ├─ data/house.json       structured building model in METRES (single source of truth)
    ├─ core/units.js         metric <-> internal unit adapter and metric formatters
+   ├─ core/solar.js         sun position, panel geometry, shading ray-casting, PV yield (shared with the validator)
    ├─ core/hvac.js          VRV load estimate, unit catalogue, sizing, tank loads (shared with the validator)
    ├─ core/geometry.js      wall splitting, slab decomposition, colliders, walkable surfaces, A*, routing
    ├─ controls/walker.js    first-person controller (eased motion, collisions, autopilot, touch)
@@ -239,7 +255,7 @@ house3d/
 - A18. The terrace living room is staged as a gym at the client's request (rubber floor, mirror wall on the solid west wall with a clerestory above, hanging boxing bag, treadmill, bench, dumbbell rack, yoga mats). The kitchen island follows the terrace plan.
 - A19. Interior themes change finishes, furniture fabrics and decor only. Walls, openings, room sizes and furniture positions are identical in every theme.
 - A20. Lighting is simulated (sun and sky model, window daylight, indicative ceiling downlights and lamps) for visualisation; it is not a daylight or lux calculation.
-- A21. Front elevation styled after the client-supplied reference and the architect's render (PDF p.1): dark stone cladding to front-facing walls, charcoal render elsewhere, a terrace-level roof frame with a slanted timber soffit (left end), timber/bronze vertical fins and a geometric jali on the first-floor balcony, black-framed slatted gates and pillars. Cladding is a finish; wall and opening positions are unchanged. The earlier flat second-floor-level canopy (an approximation) is replaced by this frame.
+- A21. Front elevation styled after the client-supplied reference and the architect's render (PDF p.1): dark stone cladding to front-facing walls, charcoal render elsewhere, a terrace-level roof frame with a slanted timber soffit (left end), full-height CNC-cut metal jali screens (front-left over the FF+SF and on the FF balcony), black-framed slatted gates and pillars. Cladding is a finish; wall and opening positions are unchanged. The earlier flat second-floor-level canopy (an approximation) is replaced by this frame.
 - A22. The green area opens to the front yard through the 0.84 m strip west of the GF common toilet, as drawn; the short wall stub that closed it in v1-v3 is removed.
 - A23. GF kitchen staged as a luxury modular kitchen (high-gloss lacquer shutters, bronze J-profile handles, black-and-gold marble backsplash, lit glass display uppers, chimney hood, lit open-shelf tall unit, integrated tall fridge unit). The rear wall is modelled solid as drawn (v1 had assumed a window).
 - A24. FF and SF master bedrooms are staged with round upholstered beds (~2.29 m diameter), channel-tufted headboards, upholstered wall panels and a circular cove ceiling feature; TVs are provided in all bedrooms and living rooms. All are indicative staging.
@@ -248,8 +264,13 @@ house3d/
 - A27. Indoor units are ceiling cassettes (round-flow 950 x 950 mm panel, or compact 620 x 620 mm) placed by load and throw coverage, clear of beds, pendants, chandelier, cove ceilings and the atrium void. They need a ~300 mm false ceiling (finished height ~2.74 m); the model shows panels at slab soffit for simplicity. Condensate is pumped (built-in drain pumps) to the nearest toilet or shaft. Toilets, utility, stores, stair and open balconies are ventilated, not cooled.
 - A28. Refrigerant risers run vertically in the plumbing shaft (riser at x 8.32 m, z 0.58 m, inside the GF duct / FF-SF-terrace shaft overlap) and exit to the outdoor units through the terrace toilet's east wall.
 - A29. Two 2,000 L overhead tanks (approx. 1.50 m dia x 1.40 m, triple-layer polyethylene) stand on 450 mm RCC pedestals at roof level (12.80 m): OHT-1 over the terrace toilet/shaft roof, OHT-2 over the stair-cabin roof. Each full tank is ~2.05 t (about 11 kN/m2 under the pedestal), so the pedestals must bear on beams/walls; the structural engineer must confirm the roof slab for this load. Roof access is by a steel cat ladder with safety hoops on the stair-cabin wall.
-- A30. Client changes (v6): the GF living 2-seater by the entrance is replaced by an L-shaped built-in shoe-rack bench (open cubbies, cushioned seat, scatter cushions) along the east wall and the front wall up to the main door; the terrace pergola is moved from the small deck in front of the terrace room to the larger open terrace over the SF bedroom (approx. 4.6 m x 5.1 m, four posts). The former pergola deck becomes open terrace.
+- A30. Client changes (v6): the GF living 2-seater by the entrance is replaced by an L-shaped built-in shoe-rack bench (open cubbies, cushioned seat, scatter cushions) along the east wall and the front wall up to the main door; the terrace pergola is moved from the small deck in front of the terrace room to the larger open terrace over the SF bedroom (approx. 4.6 m x 5.1 m, four posts, timber slats running left-right across the terrace). The former pergola deck becomes open terrace.
 - A31. Client changes (v7): a cantilevered balcony (approx. 3.47 m x 1.24 m, frameless glass railing, planters, LED trim and soffit downlights) is added in front of the SF bedroom, reached through a sliding door; the remaining front opening stays a window. This matches the projecting SF balcony shown in the architect's render (resolving I8) and needs a structural cantilever from the SF slab. A floor-to-slab CNC-cut metal grill now also screens the open west side of the SF snooker balcony.
+- A32. Client change (v8): the front-left timber fins are replaced by a full-height (FF+SF) CNC-cut metal jali, matching the side grill; all jali screens use an interlocking star-lattice pattern after the client's reference.
+- A33. Client change (v9): dark exterior scheme after the client's reference. Every outward-facing wall face is clad (veined dark-grey stone on street faces, charcoal render elsewhere), open-air slab undersides and planters are charcoal, and timber is kept for the soffits, side fin and gates. Neighbouring buildings stay light as context.
+- A34. Client change (v10): the front CNC grill now screens the complete left bay at second-floor level (full width of the snooker balcony, x 2.29-7.12 m) from the SF floor up to the slanted timber soffit, wrapping the corner into the west-side grill. At first-floor level it stays on the left part only, so the living room's sliding door to the front balcony remains usable.
+- A35. Client correction (v11): the opening from the GF living room to the green area (line B, z 10.29-11.28 m) is a window (sill 0.91 m, head 2.13 m), not a sliding door. The green area is reached from the front yard through the courtyard passage and from the utility room's door.
+- A36. Rooftop solar provision (v12): 9 x 580 Wp n-type TOPCon modules (2,278 x 1,134 mm) = 5.22 kWp in 3 rows of 3 on the terrace-room roof (12.80 m). The elevated hot-dip GI structure sits on RCC blocks, 22 deg tilt (~latitude 22.1 N), facing south (assumed orientation, A5), low edge 0.60 m above the roof, 1.2 m between rows, 0.3 m edge clearance and >= 0.6 m from the tanks. The validator's shading check (sun-path ray casting against the tanks and other rows on 21 Mar/Jun/Sep/Dec) shows it shade-free from 09:00 to 15:00. A 5 kW on-grid string inverter with ACDB/DCDB is on the solid north face of the stair-cabin wall, behind the VRV outdoor units (>= 1.2 m service space kept). DC runs over the roof; AC runs down the plumbing shaft to the GF main DB / net meter, with separate DC/AC earth pits and a lightning arrester. Estimated ~7,800 kWh/yr at an indicative 1,500 kWh/kWp/yr. Dead load ~0.2 kN/m2 plus wind uplift (IS 875-3) to be confirmed by the structural engineer; final design by the solar EPC / DISCOM approval.
 
 ## Architectural inconsistencies identified
 
@@ -279,7 +300,7 @@ These come from analysing the drawings; several are confirmed automatically by `
 
 ## Validation
 
-`npm run validate` checks the model and writes `VALIDATION_REPORT.md`. Current result: **0 errors, 13 warnings, 15 info**, and **38 of 38 accessible spaces are reachable** from the main gate. All values are reported in metres; the 13 warnings are genuine issues in the drawings (see the inconsistencies above).
+`npm run validate` checks the model and writes `VALIDATION_REPORT.md`. Current result: **0 errors, 13 warnings, 16 info**, and **38 of 38 accessible spaces are reachable** from the main gate. All values are reported in metres; the 13 warnings are genuine issues in the drawings (see the inconsistencies above).
 
 | Check | What it verifies |
 |---|---|
@@ -287,6 +308,7 @@ These come from analysing the drawings; several are confirmed automatically by `
 | Units | `meta.units` must be `m` |
 | Air-conditioning | Every conditioned room has a cassette, installed kW ≥ design load, catalogue sizes, cassettes inside the room and not over the void, wall clearance, clashes with pendants/fans, throw coverage, outdoor-unit capacity vs block load, connection ratio 50–130%, outdoor-unit placement and service space, risers inside the shaft on every floor |
 | Water tanks | On the roof, spacing ≥ 0.3 m, full weight and bearing pressure |
+| Rooftop solar | On the roof with ≥ 0.3 m edge clearance, ≥ 0.6 m from tanks, clear of the ladder landing, no overlaps, low-edge height, 09:00–15:00 shading on four reference days, DC/AC ratio, yield and dead load |
 | Openings | Inside their wall, non-overlapping, head ≤ wall height, door clear widths ≥ 0.76 m |
 | Rooms | No overlapping rooms, rooms do not cut through walls, upper-floor rooms are fully supported by the slab |
 | Furniture | Inside its room, not intersecting walls, no overlaps between solid items |

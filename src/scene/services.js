@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { IDU } from '../core/hvac.js';
+import { panelGeom } from '../core/solar.js';
 import { M_PER_FT } from '../core/units.js';
 
 // Building services: VRV indoor cassettes, outdoor units, refrigerant/water routing overlay, roof tanks, cat ladder.
@@ -40,8 +41,63 @@ export function serviceMaterials() {
     // overlay pipes render in X-ray mode so the routing reads through walls and ceilings
     ref1: new THREE.MeshBasicMaterial({ color: '#ff8a3d', depthTest: false, transparent: true, opacity: 0.95 }),
     ref2: new THREE.MeshBasicMaterial({ color: '#21c7b7', depthTest: false, transparent: true, opacity: 0.95 }),
-    water: new THREE.MeshBasicMaterial({ color: '#3d8bff', depthTest: false, transparent: true, opacity: 0.95 })
+    water: new THREE.MeshBasicMaterial({ color: '#3d8bff', depthTest: false, transparent: true, opacity: 0.95 }),
+    dc: new THREE.MeshBasicMaterial({ color: '#f5d90a', depthTest: false, transparent: true, opacity: 0.95 }),
+    ac: new THREE.MeshBasicMaterial({ color: '#e23c64', depthTest: false, transparent: true, opacity: 0.95 }),
+    pv: new THREE.MeshPhysicalMaterial({ map: pvTexture(), roughness: 0.12, metalness: 0.2, clearcoat: 1, clearcoatRoughness: 0.03, envMapIntensity: 1.3 }),
+    pvFrame: new THREE.MeshStandardMaterial({ color: '#c9ccd0', roughness: 0.35, metalness: 0.9 }),
+    gi: new THREE.MeshStandardMaterial({ color: '#9ea3a7', roughness: 0.45, metalness: 0.85 }),
+    box: new THREE.MeshStandardMaterial({ color: '#e9eaeb', roughness: 0.5 }),
+    led: new THREE.MeshBasicMaterial({ color: '#3cff7a' })
   };
+}
+
+/** 144 half-cell mono module face: 6 columns x 24 half-cells, silver busbars, white cell gaps. */
+function pvTexture() {
+  const c = document.createElement('canvas'); c.width = 256; c.height = 512; const x = c.getContext('2d');
+  x.fillStyle = '#d8dde2'; x.fillRect(0, 0, 256, 512);
+  const cols = 6, rows = 24, m = 4, gw = (256 - 2 * m) / cols, gh = (512 - 2 * m) / rows;
+  for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) {
+    const g = x.createLinearGradient(0, m + j * gh, 0, m + (j + 1) * gh); g.addColorStop(0, '#16233b'); g.addColorStop(1, '#0d1628');
+    x.fillStyle = g; x.fillRect(m + i * gw + 1, m + j * gh + 1, gw - 2, gh - 2);
+    x.fillStyle = 'rgba(190,200,215,0.55)'; for (let k = 1; k <= 3; k++) x.fillRect(m + i * gw + (k * gw) / 4 - 0.5, m + j * gh + 1, 1, gh - 2);
+  }
+  x.fillStyle = '#c4cad1'; x.fillRect(0, 254, 256, 4);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+}
+
+function solarArray(bag, S, house) {
+  const So = house.solar; const roofY = house.roof.y; const mod = So.module; const tilt = So.tilt * Math.PI / 180;
+  const geoms = So.panels.map((p) => panelGeom(p, mod, So.tilt, So.lowEdge, roofY));
+  const th = 0.1; // ~30 mm frame in ft
+  for (const g of geoms) {
+    const cy = (g.low.y + g.high.y) / 2, cz = (g.low.z + g.high.z) / 2;
+    const frame = new THREE.BoxGeometry(g.w, th, g.l); frame.rotateX(tilt); frame.translate(g.x, cy - th / 2 * Math.cos(tilt), cz - th / 2 * Math.sin(tilt)); bag.add(S.pvFrame, frame);
+    const face = new THREE.PlaneGeometry(g.w - 0.1, g.l - 0.1); face.rotateX(-Math.PI / 2); face.rotateX(tilt); face.translate(g.x, cy + 0.01 * Math.cos(tilt), cz + 0.01 * Math.sin(tilt)); bag.add(S.pv, face);
+  }
+  // GI structure: posts on RCC blocks at panel-column lines, rafters along the slope, two purlins per row
+  const rows = new Map(); for (const g of geoms) { const k = g.low.z.toFixed(2); if (!rows.has(k)) rows.set(k, []); rows.get(k).push(g); }
+  for (const rg of rows.values()) {
+    const x1 = Math.min(...rg.map((g) => g.x - g.w / 2)), x2 = Math.max(...rg.map((g) => g.x + g.w / 2)); const g0 = rg[0];
+    const nb = rg.length; const lines = []; for (let i = 0; i <= nb; i++) lines.push(x1 + 0.25 + ((x2 - x1 - 0.5) * i) / nb);
+    const zf = g0.low.z - 0.35 * Math.cos(tilt) * 1, zr = g0.high.z + 0.35 * Math.cos(tilt);
+    const yf = g0.low.y + 0.35 * Math.sin(tilt) - 0.12, yr = g0.high.y - 0.35 * Math.sin(tilt) - 0.12;
+    for (const x of lines) {
+      bag.add(S.concrete, B(1.0, 0.5, 1.0, x, roofY, zf)); bag.add(S.concrete, B(1.0, 0.5, 1.0, x, roofY, zr));
+      bag.add(S.gi, B(0.14, yf - roofY - 0.5, 0.14, x, roofY + 0.5, zf)); bag.add(S.gi, B(0.14, yr - roofY - 0.5, 0.14, x, roofY + 0.5, zr));
+      const raf = pipeBox(new THREE.Vector3(x, g0.low.y - 0.12, g0.low.z), new THREE.Vector3(x, g0.high.y - 0.12, g0.high.z), 0.16, 0.12); bag.add(S.gi, raf);
+      const br = pipeBox(new THREE.Vector3(x, roofY + 0.5, zf), new THREE.Vector3(x, yr - 0.2, zr), 0.1, 0.1); bag.add(S.gi, br);
+    }
+    for (const f of [0.22, 0.78]) {
+      const y = g0.low.y + (g0.high.y - g0.low.y) * f - 0.05, z = g0.low.z + (g0.high.z - g0.low.z) * f;
+      bag.add(S.gi, B(x2 - x1, 0.14, 0.12, (x1 + x2) / 2, y - 0.14, z));
+    }
+  }
+}
+/** Rectangular-section member between two points. */
+function pipeBox(a, b, w, h) {
+  const d = new THREE.Vector3().subVectors(b, a); const len = d.length(); const g = new THREE.BoxGeometry(w, h, len); g.translate(0, 0, len / 2);
+  g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), d.normalize())); g.translate(a.x, a.y, a.z); return g;
 }
 
 function cassette(bag, S, fam, x, y, z) {
@@ -136,6 +192,26 @@ export function buildServices(house, S) {
     for (const t of Wt.tanks) { const a = new THREE.Vector3(t.x, yo, t.z); const b = new THREE.Vector3(t.x, yo, dt.z); const c = new THREE.Vector3(dt.x, yo, dt.z); [pipe(a, b, 0.12), pipe(b, c, 0.12)].forEach((g) => g && ob.add(S.water, g)); }
     ob.add(S.water, pipe(new THREE.Vector3(dt.x, yo, dt.z), new THREE.Vector3(dt.x, 0.5, dt.z), 0.14));
     if (Wt.ladder) ladder(bags[TR], S, Wt.ladder, yT, yR);
+  }
+  if (house.solar) {
+    solarArray(rb, S, house);
+    const inv = house.solar.inverter; const L = house.levels[TR]; const y0 = L.y + inv.y;
+    // inverter + DCDB/ACDB boxes on the solid north face of the stair-cabin wall (facing -z, behind the ODUs)
+    const zf = inv.z; const bw = 1.0, bh = 1.3, bd = 0.45;
+    bags[TR].add(S.box, B(inv.w, inv.h, inv.d, inv.x, y0, zf - inv.d / 2));
+    bags[TR].add(S.oduDark, B(inv.w * 0.6, inv.h * 0.35, 0.02, inv.x, y0 + inv.h * 0.55, zf - inv.d - 0.01));
+    bags[TR].add(S.led, B(0.06, 0.06, 0.02, inv.x + inv.w * 0.2, y0 + inv.h * 0.45, zf - inv.d - 0.02));
+    for (const sx of [-1, 1]) bags[TR].add(S.box, B(bw, bh, bd, inv.x + sx * (inv.w / 2 + bw / 2 + 0.25), y0 + 0.2, zf - bd / 2));
+    bags[TR].add(S.pvc, C(0.08, house.roof.y - (y0 + inv.h), inv.x, y0 + inv.h, zf - 0.12, 8));
+    // overlay: DC from array to inverter (yellow), AC from inverter down the shaft to the GF main DB / net meter (magenta)
+    const xs = house.solar.panels.map((p) => p.x); const ax = Math.max(...xs) + house.solar.module.w / 2; const yR = house.roof.y + 0.2;
+    const zs = [...new Set(house.solar.panels.map((p) => p.z))].sort((a, b) => a - b); const zm = zs[Math.floor(zs.length / 2)];
+    const V = (x, y, z) => new THREE.Vector3(x, y, z);
+    const dcPts = [V(ax, yR + 1.2, zm), V(ax, yR, zm), V(ax, yR, 8.8), V(inv.x, yR, 8.8), V(inv.x, yR, inv.z - 0.12), V(inv.x, y0 + inv.h, inv.z - 0.12)];
+    for (let i = 1; i < dcPts.length; i++) { const g = pipe(dcPts[i - 1], dcPts[i], 0.13); if (g) ob.add(S.dc, g); }
+    const yF = L.y + 0.4; const sx = 28.8, sz = 2.0;
+    const acPts = [V(inv.x - 0.9, y0 + 0.2, inv.z - 0.3), V(inv.x - 0.9, yF, inv.z - 0.3), V(30.45, yF, inv.z - 0.3), V(30.45, yF, sz), V(sx, yF, sz), V(sx, 0.6, sz)];
+    for (let i = 1; i < acPts.length; i++) { const g = pipe(acPts[i - 1], acPts[i], 0.13); if (g) ob.add(S.ac, g); }
   }
   bags.forEach((b, i) => b.flush(perLevel[i]));
   rb.flush(roof);

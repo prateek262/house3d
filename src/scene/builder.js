@@ -270,14 +270,21 @@ function addSkins(bucket, house, L) {
     const axis = wallAxis(w);
     for (const p of wallPieces(house, L, w)) {
       if (p.kind === 'glass') continue;
-      const m = axis === 'x' ? (p.x1 + p.x2) / 2 : (p.z1 + p.z2) / 2;
-      const sides = axis === 'x' ? [[-1, outside(m, p.z1 - 0.6)], [1, outside(m, p.z2 + 0.6)]] : [[-1, outside(p.x1 - 0.6, m)], [1, outside(p.x2 + 0.6, m)]];
-      // every face that is seen from outside gets the dark exterior finish (stone on street-facing faces)
-      for (const [dir, out] of sides) {
-        if (!out) continue;
-        const key = axis === 'x' && dir > 0 ? 'ext_stone' : 'ext_dark';
-        if (axis === 'x') bucket.add(key, dir > 0 ? worldBox(p.x1, p.y1, p.z2, p.x2, p.y2, p.z2 + T) : worldBox(p.x1, p.y1, p.z1 - T, p.x2, p.y2, p.z1));
-        else bucket.add(key, dir > 0 ? worldBox(p.x2, p.y1, p.z1, p.x2 + T, p.y2, p.z2) : worldBox(p.x1 - T, p.y1, p.z1, p.x1, p.y2, p.z2));
+      // walk along the piece in ~1 ft steps so walls that are only partly exposed get skinned on the exposed run
+      const a1 = axis === 'x' ? p.x1 : p.z1, a2 = axis === 'x' ? p.x2 : p.z2; const n = Math.max(1, Math.round((a2 - a1) / 1.0));
+      const state = (m) => (axis === 'x' ? [outside(m, p.z1 - 0.6), outside(m, p.z2 + 0.6)] : [outside(p.x1 - 0.6, m), outside(p.x2 + 0.6, m)]);
+      const emit = (s1, s2, st) => {
+        st.forEach((out, k) => {
+          if (!out) return; const dir = k === 0 ? -1 : 1;
+          const key = axis === 'x' && dir > 0 ? 'ext_stone' : 'ext_dark';
+          if (axis === 'x') bucket.add(key, dir > 0 ? worldBox(s1, p.y1, p.z2, s2, p.y2, p.z2 + T) : worldBox(s1, p.y1, p.z1 - T, s2, p.y2, p.z1));
+          else bucket.add(key, dir > 0 ? worldBox(p.x2, p.y1, s1, p.x2 + T, p.y2, s2) : worldBox(p.x1 - T, p.y1, s1, p.x1, p.y2, s2));
+        });
+      };
+      let runStart = a1; let runState = state(a1 + (a2 - a1) / n / 2);
+      for (let i = 1; i <= n; i++) {
+        const segEnd = a1 + ((a2 - a1) * i) / n; const next = i < n ? state(segEnd + (a2 - a1) / n / 2) : null;
+        if (!next || next[0] !== runState[0] || next[1] !== runState[1]) { emit(runStart, segEnd, runState); runStart = segEnd; runState = next; }
       }
     }
   }

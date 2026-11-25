@@ -5,7 +5,7 @@
 export const M_PER_FT = 0.3048;
 export const FT_PER_M = 1 / M_PER_FT;
 
-const UNITLESS = new Set(['rot', 'seats', 'sinks', 'risersPerFlight', 'version', 'art', 'orbit', 'kw', 'hp', 'kg', 'litres', 'emptyKg', 'cushions']);
+const UNITLESS = new Set(['rot', 'seats', 'sinks', 'risersPerFlight', 'version', 'art', 'orbit', 'kw', 'hp', 'kg', 'litres', 'emptyKg', 'cushions', 'wp', 'tilt', 'az', 'lat', 'lon', 'structureKgM2', 'specificYield']);
 const TEXT_SECTIONS = new Set(['meta', 'assumptions', 'inconsistencies']);
 
 function scale(v, key, k) {

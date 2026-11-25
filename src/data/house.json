@@ -11,7 +11,7 @@
    "width": 12.472,
    "depth": 15.57
   },
-  "version": 7,
+  "version": 12,
   "staging": "Furniture, decor, appliances and finishes are indicative interior staging, not part of the architectural specification."
  },
  "defaults": {
@@ -92,7 +92,8 @@
   "A32. Client change (v8): the front-left timber fins are replaced by a full-height (FF+SF) CNC-cut metal jali, matching the side grill; all jali screens use an interlocking star-lattice pattern after the client's reference.",
   "A33. Client change (v9): dark exterior scheme after the client's reference. Every outward-facing wall face is clad (veined dark-grey stone on street faces, charcoal render elsewhere), open-air slab undersides and planters are charcoal, and timber is kept for the soffits, side fin and gates. Neighbouring buildings stay light as context.",
   "A34. Client change (v10): the front CNC grill now screens the complete left bay at second-floor level (full width of the snooker balcony, x 2.29-7.12 m) from the SF floor up to the slanted timber soffit, wrapping the corner into the west-side grill. At first-floor level it stays on the left part only, so the living room's sliding door to the front balcony remains usable.",
-  "A35. Client correction (v11): the opening from the GF living room to the green area (line B, z 10.29-11.28 m) is a window (sill 0.91 m, head 2.13 m), not a sliding door. The green area is reached from the front yard through the courtyard passage and from the utility room's door."
+  "A35. Client correction (v11): the opening from the GF living room to the green area (line B, z 10.29-11.28 m) is a window (sill 0.91 m, head 2.13 m), not a sliding door. The green area is reached from the front yard through the courtyard passage and from the utility room's door.",
+  "A36. Rooftop solar provision (v12): 9 x 580 Wp n-type TOPCon modules (2,278 x 1,134 mm) = 5.22 kWp in 3 rows of 3 on the terrace-room roof (12.80 m). The elevated hot-dip GI structure sits on RCC blocks, 22 deg tilt (~latitude 22.1 N), facing south (assumed orientation, A5), low edge 0.60 m above the roof, 1.2 m between rows, 0.3 m edge clearance and >= 0.6 m from the tanks. The validator's shading check (sun-path ray casting against the tanks and other rows on 21 Mar/Jun/Sep/Dec) shows it shade-free from 09:00 to 15:00. A 5 kW on-grid string inverter with ACDB/DCDB is on the solid north face of the stair-cabin wall, behind the VRV outdoor units (>= 1.2 m service space kept). DC runs over the roof; AC runs down the plumbing shaft to the GF main DB / net meter, with separate DC/AC earth pits and a lightning arrester. Estimated ~7,800 kWh/yr at an indicative 1,500 kWh/kWp/yr. Dead load ~0.2 kN/m2 plus wind uplift (IS 875-3) to be confirmed by the structural engineer; final design by the solar EPC / DISCOM approval."
  ],
  "inconsistencies": [
   {
@@ -3875,6 +3876,17 @@
      "y2": 1.807,
      "collide": true,
      "hidden": true
+    },
+    {
+     "type": "solar_inverter",
+     "x1": 9.373,
+     "x2": 10.348,
+     "z1": 2.332,
+     "z2": 2.566,
+     "y1": 0.9,
+     "y2": 1.9,
+     "collide": true,
+     "hidden": true
     }
    ]
   }
@@ -4287,6 +4299,23 @@
     0.457
    ],
    "dolly": 0.305
+  },
+  {
+   "id": "solar",
+   "kind": "exterior",
+   "title": "Rooftop Solar",
+   "caption": "About 5.2 kWp of south-facing panels on the terrace-room roof, beside the two overhead water tanks.",
+   "camera": [
+    -5.2,
+    20.5,
+    13.5
+   ],
+   "target": [
+    5.6,
+    12.6,
+    4.6
+   ],
+   "orbit": 0.1
   }
  ],
  "hvac": {
@@ -4550,5 +4579,81 @@
    "z1": 4.755,
    "z2": 5.304
   }
+ },
+ "solar": {
+  "system": "Grid-tied rooftop solar PV (net-metered), elevated GI module mounting structure",
+  "module": {
+   "wp": 580,
+   "tech": "n-type TOPCon mono, 144 half-cell, glass/backsheet",
+   "w": 1.134,
+   "l": 2.278,
+   "t": 0.03,
+   "kg": 28
+  },
+  "tilt": 22,
+  "az": 180,
+  "lowEdge": 0.6,
+  "structureKgM2": 9,
+  "panels": [
+   {
+    "id": "PV-01",
+    "x": 3.509,
+    "z": 1.356
+   },
+   {
+    "id": "PV-02",
+    "x": 4.663,
+    "z": 1.356
+   },
+   {
+    "id": "PV-03",
+    "x": 5.817,
+    "z": 1.356
+   },
+   {
+    "id": "PV-04",
+    "x": 3.509,
+    "z": 4.668
+   },
+   {
+    "id": "PV-05",
+    "x": 4.663,
+    "z": 4.668
+   },
+   {
+    "id": "PV-06",
+    "x": 5.817,
+    "z": 4.668
+   },
+   {
+    "id": "PV-07",
+    "x": 3.509,
+    "z": 7.98
+   },
+   {
+    "id": "PV-08",
+    "x": 4.663,
+    "z": 7.98
+   },
+   {
+    "id": "PV-09",
+    "x": 5.817,
+    "z": 7.98
+   }
+  ],
+  "inverter": {
+   "kw": 5,
+   "label": "5 kW on-grid string inverter + ACDB/DCDB with SPDs",
+   "x": 9.86,
+   "z": 2.566,
+   "y": 1.25,
+   "w": 0.47,
+   "h": 0.62,
+   "d": 0.2,
+   "face": "-z"
+  },
+  "earthing": "Separate DC and AC earth pits + lightning arrester on the stair-cabin roof",
+  "meter": "Net meter beside the main meter at the GF entrance (per DISCOM)",
+  "future": "Provision: spare conduit and structure anchors for ~2 kWp more on the pergola (bifacial glass-glass) if required"
  }
 }

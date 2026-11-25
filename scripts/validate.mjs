@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 import * as G from '../src/core/geometry.js';
 import { toSceneUnits, M_PER_FT } from '../src/core/units.js';
 import * as HV from '../src/core/hvac.js';
+import * as SO from '../src/core/solar.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 // house.json is authored in metres; checks run in the engine's internal units and are reported in metres.
@@ -264,6 +265,38 @@ if (house.water) {
   add('info', 'water', `Roof storage ${total} L in ${house.water.tanks.length} tanks; roof access by steel cat ladder from the open terrace`);
 }
 
+// ---------------------------------------------------------------- 12. rooftop solar PV
+const solarRows = []; let solarSum = null;
+if (house.solar) {
+  const S = house.solar; const roof = house.roof.rects; const clr = (0.3 / M_PER_FT) * 0.98; solarSum = SO.solarSummary(house);
+  const inRoof = (x, z) => roof.some((q) => G.pointInRect(q, x, z));
+  const fps = S.panels.map((p) => { const g = SO.panelGeom(p, S.module, S.tilt, S.lowEdge, house.roof.y); return { id: p.id, r: [p.x - g.w / 2, p.z - g.dz / 2, p.x + g.w / 2, p.z + g.dz / 2], g }; });
+  for (const f of fps) {
+    const [x1, z1, x2, z2] = f.r;
+    if (![[x1 - clr, z1 - clr], [x2 + clr, z1 - clr], [x1 - clr, z2 + clr], [x2 + clr, z2 + clr]].every(([x, z]) => inRoof(x, z))) add('error', 'solar', `${f.id} is not on the roof with >= 0.30 m edge clearance`);
+    for (const t of house.water?.tanks || []) {
+      const r = t.diameter / 2 + 0.6 / M_PER_FT; const cx = Math.max(x1, Math.min(t.x, x2)), cz = Math.max(z1, Math.min(t.z, z2));
+      if (Math.hypot(t.x - cx, t.z - cz) < r) add('error', 'solar', `${f.id} is within 0.6 m of tank ${t.id} (maintenance access)`);
+    }
+    const lad = house.water?.ladder; if (lad && G.rectIntersect(f.r, [lad.x1 - 3, lad.z1 - 3, lad.x2 + 3, lad.z2 + 3])) add('error', 'solar', `${f.id} blocks the roof-ladder landing`);
+    if (f.g.low.y - house.roof.y < 0.45 / M_PER_FT) add('warn', 'solar', `${f.id} low edge < 450 mm above the roof (cleaning / waterproofing access)`);
+  }
+  for (let i = 0; i < fps.length; i++) for (let j = i + 1; j < fps.length; j++) if (G.rectIntersect(fps[i].r, fps[j].r)) add('error', 'solar', `${fps[i].id} overlaps ${fps[j].id}`);
+  const sh = solarSum.shading;
+  if (sh.worst.frac > 0) add('warn', 'solar', `Array shading reaches ${Math.round(sh.worst.frac * 100)}% at ${sh.worst.label} (target: shade-free 09:00-15:00 all year)`);
+  const dcac = solarSum.kwp / S.inverter.kw; if (dcac < 0.9 || dcac > 1.3) add('warn', 'solar', `DC/AC ratio ${dcac.toFixed(2)} outside 0.9-1.3`);
+  const loadKNm2 = (solarSum.kg * 9.81) / 1000 / solarSum.areaM2;
+  add('info', 'solar', `${solarSum.count} x ${S.module.wp} Wp = ${solarSum.kwp.toFixed(2)} kWp at ${S.tilt} deg tilt facing south; inverter ${S.inverter.kw} kW (DC/AC ${dcac.toFixed(2)}); shading loss ${(sh.loss * 100).toFixed(1)}%; est. ${Math.round(solarSum.annualKWh).toLocaleString('en-IN')} kWh/yr (~${Math.round(solarSum.annualKWh / 365)} kWh/day); dead load ~${loadKNm2.toFixed(2)} kN/m² over the array`);
+  for (const [label, doy] of Object.entries(SO.DAYS)) {
+    const row = { day: label, cells: [] };
+    for (const h of [9, 10, 11, 12, 13, 14, 15]) {
+      const one = SO.shadingAnalysis(S.panels, S.module, S.tilt, S.lowEdge, house.roof.y, SO.tankObstacles(house), { hours: [h], days: { [label]: doy } });
+      const d = SO.sunDir(doy, h); row.cells.push(d.elev < 8 ? '-' : `${Math.round(d.elev)} deg / ${Math.round(one.loss * 100)}%`);
+    }
+    solarRows.push(row);
+  }
+}
+
 // ---------------------------------------------------------------- report
 const counts = { error: 0, warn: 0, info: 0 }; issues.forEach((i) => counts[i.level]++);
 const lines = [];
@@ -293,6 +326,11 @@ if (hvacRows.length) {
 if (tankRows.length) {
   lines.push('', '## Overhead water tanks', '', '| Tank | Capacity | Size (dia x h) | Full weight | Bearing on pedestal |', '|---|---|---|---|---|');
   for (const t of tankRows) lines.push(`| ${t.id} | ${t.litres} L | ${(t.diameter * M_PER_FT).toFixed(2)} x ${(t.height * M_PER_FT).toFixed(2)} m | ${t.kg} kg | ${t.kNm2.toFixed(1)} kN/m² |`);
+}
+if (solarSum) {
+  const S = house.solar;
+  lines.push('', '## Rooftop solar PV', '', `${solarSum.count} x ${S.module.wp} Wp ${S.module.tech} = **${solarSum.kwp.toFixed(2)} kWp**, tilt ${S.tilt} deg, facing south (assumed, A5), low edge ${(S.lowEdge * M_PER_FT).toFixed(2)} m above the roof. Inverter ${S.inverter.kw} kW. Estimated yield **${Math.round(solarSum.annualKWh).toLocaleString('en-IN')} kWh/yr** (indicative: ${SO.SPECIFIC_YIELD} kWh/kWp/yr x tilt factor x (1 - shading loss ${(solarSum.shading.loss * 100).toFixed(1)}%)).`, '', 'Sun elevation / share of array shaded (solar time):', '', '| Day | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 |', '|---|---|---|---|---|---|---|---|');
+  for (const r of solarRows) lines.push(`| ${r.day} | ${r.cells.join(' | ')} |`);
 }
 writeFileSync(join(root, 'VALIDATION_REPORT.md'), lines.join('\n') + '\n');
 
